@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44227FDC1A5A55A1001B980B /* SDLplusplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44227FD01A5A55A1001B980B /* SDLplusplus.framework */; };
-		44227FE31A5A55A1001B980B /* SDLplusplusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44227FE21A5A55A1001B980B /* SDLplusplusTests.m */; };
 		442280141A5A5648001B980B /* Audio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44227FEE1A5A5648001B980B /* Audio.cpp */; };
 		442280151A5A5648001B980B /* Audio.h in Headers */ = {isa = PBXBuildFile; fileRef = 44227FEF1A5A5648001B980B /* Audio.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		442280161A5A5648001B980B /* BlendMode.h in Headers */ = {isa = PBXBuildFile; fileRef = 44227FF01A5A5648001B980B /* BlendMode.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,22 +44,9 @@
 		4422804C1A5A5C22001B980B /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442280481A5A5C22001B980B /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		44227FDD1A5A55A1001B980B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 44227FC71A5A55A1001B980B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 44227FCF1A5A55A1001B980B;
-			remoteInfo = SDLplusplus;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		44227FD01A5A55A1001B980B /* SDLplusplus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDLplusplus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44227FD41A5A55A1001B980B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44227FDB1A5A55A1001B980B /* SDLplusplusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SDLplusplusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44227FE11A5A55A1001B980B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44227FE21A5A55A1001B980B /* SDLplusplusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDLplusplusTests.m; sourceTree = "<group>"; };
 		44227FEE1A5A5648001B980B /* Audio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Audio.cpp; sourceTree = "<group>"; };
 		44227FEF1A5A5648001B980B /* Audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Audio.h; sourceTree = "<group>"; };
 		44227FF01A5A5648001B980B /* BlendMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlendMode.h; sourceTree = "<group>"; };
@@ -111,14 +96,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44227FD81A5A55A1001B980B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44227FDC1A5A55A1001B980B /* SDLplusplus.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -126,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				44227FD21A5A55A1001B980B /* SDLplusplus */,
-				44227FDF1A5A55A1001B980B /* SDLplusplusTests */,
 				44227FD11A5A55A1001B980B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				44227FD01A5A55A1001B980B /* SDLplusplus.framework */,
-				44227FDB1A5A55A1001B980B /* SDLplusplusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,23 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				44227FD41A5A55A1001B980B /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		44227FDF1A5A55A1001B980B /* SDLplusplusTests */ = {
-			isa = PBXGroup;
-			children = (
-				44227FE21A5A55A1001B980B /* SDLplusplusTests.m */,
-				44227FE01A5A55A1001B980B /* Supporting Files */,
-			);
-			path = SDLplusplusTests;
-			sourceTree = "<group>";
-		};
-		44227FE01A5A55A1001B980B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				44227FE11A5A55A1001B980B /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -266,24 +224,6 @@
 			productReference = 44227FD01A5A55A1001B980B /* SDLplusplus.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		44227FDA1A5A55A1001B980B /* SDLplusplusTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 44227FE91A5A55A1001B980B /* Build configuration list for PBXNativeTarget "SDLplusplusTests" */;
-			buildPhases = (
-				44227FD71A5A55A1001B980B /* Sources */,
-				44227FD81A5A55A1001B980B /* Frameworks */,
-				44227FD91A5A55A1001B980B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				44227FDE1A5A55A1001B980B /* PBXTargetDependency */,
-			);
-			name = SDLplusplusTests;
-			productName = SDLplusplusTests;
-			productReference = 44227FDB1A5A55A1001B980B /* SDLplusplusTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -294,9 +234,6 @@
 				ORGANIZATIONNAME = "Dominic Hudon";
 				TargetAttributes = {
 					44227FCF1A5A55A1001B980B = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					44227FDA1A5A55A1001B980B = {
 						CreatedOnToolsVersion = 6.1;
 					};
 				};
@@ -314,20 +251,12 @@
 			projectRoot = "";
 			targets = (
 				44227FCF1A5A55A1001B980B /* SDLplusplus */,
-				44227FDA1A5A55A1001B980B /* SDLplusplusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		44227FCE1A5A55A1001B980B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44227FD91A5A55A1001B980B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,23 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		44227FD71A5A55A1001B980B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44227FE31A5A55A1001B980B /* SDLplusplusTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		44227FDE1A5A55A1001B980B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 44227FCF1A5A55A1001B980B /* SDLplusplus */;
-			targetProxy = 44227FDD1A5A55A1001B980B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		44227FE41A5A55A1001B980B /* Debug */ = {
@@ -499,38 +412,6 @@
 			};
 			name = Release;
 		};
-		44227FEA1A5A55A1001B980B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SDLplusplusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		44227FEB1A5A55A1001B980B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SDLplusplusTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -548,15 +429,6 @@
 			buildConfigurations = (
 				44227FE71A5A55A1001B980B /* Debug */,
 				44227FE81A5A55A1001B980B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		44227FE91A5A55A1001B980B /* Build configuration list for PBXNativeTarget "SDLplusplusTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				44227FEA1A5A55A1001B980B /* Debug */,
-				44227FEB1A5A55A1001B980B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
