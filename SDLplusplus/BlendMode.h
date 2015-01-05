@@ -1,0 +1,11 @@
+#pragma once
+
+#include <SDL2/SDL.h>
+
+enum BlendMode
+{
+	NONE  = SDL_BLENDMODE_NONE,
+	BLEND = SDL_BLENDMODE_BLEND,
+	ADD   = SDL_BLENDMODE_ADD,
+	MOD   = SDL_BLENDMODE_MOD
+};
