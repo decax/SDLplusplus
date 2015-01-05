@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E6C1BCA1-3EFB-49CD-90D0-9FD9A5D52604</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Tetris</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>90AB968DCACE59813E31F53726FABA452340484F</key>
+		<string>https://github.com/decax/SDLplusplus.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>samples/Tetris/Tetris.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>90AB968DCACE59813E31F53726FABA452340484F</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/decax/SDLplusplus.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>90AB968DCACE59813E31F53726FABA452340484F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>90AB968DCACE59813E31F53726FABA452340484F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SDLplusplus</string>
+		</dict>
+	</array>
+</dict>
+</plist>
