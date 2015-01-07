@@ -3,7 +3,11 @@
 #include "Surface.h"
 #include "Texture.h"
 
-#include <SDL2_image/SDL_image.h>
+#ifdef __WIN32__
+	#include "sdl_image.h"
+#else
+	#include <SDL2_image/sdl_image.h>
+#endif
 
 #include <string>
 

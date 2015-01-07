@@ -1,8 +1,10 @@
 #pragma once
 
-#include <string>
-
-#include <SDL2/SDL.h>
+#ifdef __WIN32__
+	#include "SDL.h"
+#else
+	#include <SDL2/SDL.h>
+#endif
 
 #include <string>
 #include <vector>

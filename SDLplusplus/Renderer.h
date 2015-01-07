@@ -1,19 +1,20 @@
 #pragma once
 
-#include <SDL2/SDL.h>
+#include "Rect.h"
+#include "Texture.h"
+
+#ifdef __WIN32__
+	#include "SDL.h"
+#else
+	#include <SDL2/SDL.h>
+#endif
 
 #include <string>
 #include <vector>
-#include <iostream>
-
-#include "Rect.h"
-
-#include "Texture.h"
 
 namespace SDL {
 
 class Window;
-class Rect;
 class Color;
 
 class Renderer

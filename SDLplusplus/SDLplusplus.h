@@ -23,3 +23,10 @@
 // - add documentation
 // - add samples
 // - package in a unix/windows friendly way
+
+// include the original SDL2 for convenience
+#ifdef __WIN32__
+	#include "SDL.h"
+#else
+	#include <SDL2/SDL.h>
+#endif

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SDLplusplus/SDL.h>
+#include <SDLplusplus/SDLplusplus.h>
 
 class Piece;
 

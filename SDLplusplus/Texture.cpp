@@ -4,8 +4,6 @@
 #include "Surface.h"
 #include "Color.h"
 
-#include <SDL2_image/SDL_image.h> // FIXME: should not depend on other framework
-
 #include <exception>
 
 namespace SDL {
@@ -39,16 +37,6 @@ Texture::Texture(const Renderer &p_renderer, PixelFormat p_pixelFormat, Access p
 : Texture(p_renderer)
 {
 	texture = SDL_CreateTexture(renderer->renderer, p_pixelFormat, p_access, size.Width, size.Height);
-
-	if (texture == nullptr) {
-		throw std::exception();
-	}
-}
-	
-Texture::Texture(const Renderer &p_renderer, const std::string &filename)
-: Texture(p_renderer)
-{
-	texture = IMG_LoadTexture(renderer->renderer, filename.c_str());
 
 	if (texture == nullptr) {
 		throw std::exception();

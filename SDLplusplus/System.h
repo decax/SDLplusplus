@@ -1,13 +1,17 @@
 #pragma once
 
-#include <SDL2/SDL.h>
-
-#include <functional>
-#include <list>
-
 #include "Event.h"
 #include "Rect.h"
 #include "PixelFormat.h"
+
+#ifdef __WIN32__
+	#include "SDL.h"
+#else
+	#include <SDL2/SDL.h>
+#endif
+
+#include <functional>
+#include <list>
 
 namespace SDL {
 

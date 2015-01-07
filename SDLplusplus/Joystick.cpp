@@ -1,8 +1,8 @@
 #include "Joystick.h"
 
-namespace SDL {
-
 #include <cassert>
+
+namespace SDL {
 
 Joystick::Joystick()
 {

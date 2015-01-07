@@ -26,7 +26,7 @@
 		442280271A5A5648001B980B /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 442280011A5A5648001B980B /* Renderer.cpp */; };
 		442280281A5A5648001B980B /* Renderer.h in Headers */ = {isa = PBXBuildFile; fileRef = 442280021A5A5648001B980B /* Renderer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		442280291A5A5648001B980B /* Scancode.h in Headers */ = {isa = PBXBuildFile; fileRef = 442280031A5A5648001B980B /* Scancode.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4422802A1A5A5648001B980B /* SDL.h in Headers */ = {isa = PBXBuildFile; fileRef = 442280041A5A5648001B980B /* SDL.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4422802A1A5A5648001B980B /* SDLplusplus.h in Headers */ = {isa = PBXBuildFile; fileRef = 442280041A5A5648001B980B /* SDLplusplus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4422802B1A5A5648001B980B /* Size.h in Headers */ = {isa = PBXBuildFile; fileRef = 442280051A5A5648001B980B /* Size.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4422802E1A5A5648001B980B /* Surface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 442280081A5A5648001B980B /* Surface.cpp */; };
 		4422802F1A5A5648001B980B /* Surface.h in Headers */ = {isa = PBXBuildFile; fileRef = 442280091A5A5648001B980B /* Surface.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,7 +66,7 @@
 		442280011A5A5648001B980B /* Renderer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
 		442280021A5A5648001B980B /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
 		442280031A5A5648001B980B /* Scancode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scancode.h; sourceTree = "<group>"; };
-		442280041A5A5648001B980B /* SDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDL.h; sourceTree = "<group>"; };
+		442280041A5A5648001B980B /* SDLplusplus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDLplusplus.h; sourceTree = "<group>"; };
 		442280051A5A5648001B980B /* Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Size.h; sourceTree = "<group>"; };
 		442280081A5A5648001B980B /* Surface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Surface.cpp; sourceTree = "<group>"; };
 		442280091A5A5648001B980B /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
@@ -118,6 +118,7 @@
 		44227FD21A5A55A1001B980B /* SDLplusplus */ = {
 			isa = PBXGroup;
 			children = (
+				442280041A5A5648001B980B /* SDLplusplus.h */,
 				44227FEE1A5A5648001B980B /* Audio.cpp */,
 				44227FEF1A5A5648001B980B /* Audio.h */,
 				44227FF01A5A5648001B980B /* BlendMode.h */,
@@ -137,7 +138,6 @@
 				442280011A5A5648001B980B /* Renderer.cpp */,
 				442280021A5A5648001B980B /* Renderer.h */,
 				442280031A5A5648001B980B /* Scancode.h */,
-				442280041A5A5648001B980B /* SDL.h */,
 				442280051A5A5648001B980B /* Size.h */,
 				442280081A5A5648001B980B /* Surface.cpp */,
 				442280091A5A5648001B980B /* Surface.h */,
@@ -189,7 +189,7 @@
 				442280261A5A5648001B980B /* Rect.h in Headers */,
 				442280291A5A5648001B980B /* Scancode.h in Headers */,
 				442280181A5A5648001B980B /* Color.h in Headers */,
-				4422802A1A5A5648001B980B /* SDL.h in Headers */,
+				4422802A1A5A5648001B980B /* SDLplusplus.h in Headers */,
 				4422802F1A5A5648001B980B /* Surface.h in Headers */,
 				442280371A5A5648001B980B /* TTF.h in Headers */,
 				4422802B1A5A5648001B980B /* Size.h in Headers */,

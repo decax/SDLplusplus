@@ -1,6 +1,6 @@
 #include "Image.h"
 
-#include "SDL.h"
+#include "SDLplusplus.h"
 
 namespace SDL {
 

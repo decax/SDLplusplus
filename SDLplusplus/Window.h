@@ -1,11 +1,15 @@
 #pragma once
 
-#include <SDL2/SDL.h>
+#ifdef __WIN32__
+	#include "SDL.h"
+#else
+	#include <SDL2/SDL.h>
+#endif
+
+#include "Rect.h"
 
 #include <string>
 #include <map>
-
-#include "Rect.h"
 
 namespace SDL {
 

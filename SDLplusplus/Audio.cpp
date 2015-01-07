@@ -1,7 +1,5 @@
 #include "Audio.h"
 
-#include <SDL2/SDL.h>
-
 namespace SDL {
 
 Audio::Wave::Wave(const std::string &filename)

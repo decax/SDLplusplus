@@ -1,10 +1,15 @@
 #pragma once
 
-#include "SDL.h"
-
-#include <SDL2_ttf/SDL_ttf.h>
+#ifdef __WIN32__
+	#include "SDL_ttf.h"
+#else
+	#include <SDL2_ttf/SDL_ttf.h>
+#endif
 
 #include <string>
+#include <map>
+
+#include "SDLplusplus.h"
 
 namespace SDL {
 	
@@ -34,11 +39,16 @@ public:
 			NONE   = TTF_HINTING_NONE
 		};
 		
+		Font();
 		Font(const std::string &file, int pointSize);
 		~Font();
 		
 		void Open(const std::string &file, int pointSize);
 
+		bool IsFixedWidth() const;
+		std::string GetFamilyName() const;
+		std::string GetStyleName() const;
+		
 		void SetStyle(Style style);
 		Style GetStyle() const;
 		void SetOutline(int outline);
@@ -47,22 +57,32 @@ public:
 		void SetHinting(Hinting hinting);
 		Hinting GetHinting() const;
 		
-		bool IsFixedWidth() const;
-		std::string GetFamilyName() const;
-		std::string GetStyleName() const;
+		int GetHeight() const;
+		int GetAscent() const;
+		int GetDescent() const;
+		int GetLineSkip() const;
 		
+		int GetKerningSize(char previousCharacter, char character) const;
+
+		Size GetSize(const std::string &text) const;
+		
+		Surface RenderGlyphBlended(char character, const Color &color);
 		Surface RenderTextBlended(const std::string &text, const SDL::Color &color);
 		Surface RenderTextBlended(const std::wstring &text, const SDL::Color &color);
 		
+		void RenderTextBlended(Renderer &renderer, const std::string &text, const Point &position);
+		
 	private:
 		TTF_Font *font;
+		
+		std::map<char, Texture> glyphTextures;
 	};
 	
 	static void Init();
 	static void Quit();
 };
 	
-	inline TTF::Font::Style operator|(TTF::Font::Style a, TTF::Font::Style b) { return TTF::Font::Style(int(a) | int(b)); }
+inline TTF::Font::Style operator|(TTF::Font::Style a, TTF::Font::Style b) { return TTF::Font::Style(int(a) | int(b)); }
 
 	
 }
