@@ -36,7 +36,7 @@ public:
 	Surface Load(const std::string &filename);
 	Texture LoadTexture(const Renderer &renderer, const std::string &filename);
 	
-	void SavePNG(const Surface *surface, const std::string &filename);
+	void SavePNG(const Surface &surface, const std::string &filename);
 };
 	
 inline Image::InitFlag operator|(Image::InitFlag a, Image::InitFlag b) { return Image::InitFlag(int(a) | int(b)); }

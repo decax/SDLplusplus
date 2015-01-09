@@ -69,5 +69,9 @@ DisplayMode System::GetDesktopDisplayMode() const
 //	return SDL_AddTimer(p_interval, internal_timer_callback, p_callback);
 //}
 
+std::string System::GetPixelFormatName(PixelFormat p_pixelFormat)
+{
+	return SDL_GetPixelFormatName(p_pixelFormat);
+}
 
 }

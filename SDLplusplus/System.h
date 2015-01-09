@@ -12,6 +12,7 @@
 
 #include <functional>
 #include <list>
+#include <string>
 
 namespace SDL {
 
@@ -73,6 +74,8 @@ public:
 	void Delay(uint32_t milliseconds) const;
 
 	DisplayMode GetDesktopDisplayMode() const;
+	
+	std::string GetPixelFormatName(PixelFormat pixelFormat);
 	
 //	SDL_TimerID AddTimer(uint32_t interval, std::function<void(void)> callback) const;
 //	void RemoveTimer(SDL_TimerID timerID) const;

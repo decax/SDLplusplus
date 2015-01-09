@@ -39,4 +39,10 @@ Texture Image::LoadTexture(const Renderer &p_renderer, const std::string &p_file
 	return Texture(p_renderer, IMG_LoadTexture(p_renderer.GetSDLRenderer(), p_filename.c_str()));
 }
 	
+void Image::SavePNG(const Surface &p_surface, const std::string &p_filename)
+{
+	IMG_SavePNG(p_surface.surface, p_filename.c_str());
+}
+
+	
 }
