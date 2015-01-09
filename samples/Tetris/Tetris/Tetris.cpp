@@ -18,7 +18,7 @@ Tetris::Tetris()
 	
 	gridSizeInSquares = Size(GRID_WIDTH_IN_SQUARES, GRID_HEIGHT_IN_SQUARES);
 	
-	gridSize = Size(gridSizeInSquares.Width * Piece::Width, gridSizeInSquares.Height * Piece::Height);
+	gridSize = Size(gridSizeInSquares.Width * Square::Width, gridSizeInSquares.Height * Square::Height);
 	gridPosition = Point((window.GetSize().Width - gridSize.Width) / 2, (window.GetSize().Height - gridSize.Height) / 2);
 	
 	Square::CreateTextures(renderer);
@@ -132,6 +132,8 @@ void Tetris::Run()
 				}
 			}
 		}
+		
+		font.RenderTextBlended(renderer, "salut", Point(0, 0));
 		
 		renderer.Present();
 	}

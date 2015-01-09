@@ -12,9 +12,6 @@ public:
 	
 	static const int NB_SHAPES = 7;
 	
-	static const int Width = 32;
-	static const int Height = 32;
-	
 	static const SDL::Color *colors[NB_SHAPES];
 	
 	static void CreateTextures(SDL::Renderer &renderer);
