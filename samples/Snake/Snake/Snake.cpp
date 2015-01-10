@@ -5,14 +5,12 @@
 #include <iostream>
 #include <exception>
 
-#include <SDLplusplus/Image.h>
-
 using namespace std;
 using namespace SDL;
 
 Snake::Snake()
 : system(System::SubSystem::EVERYTHING),
-  window("snake", Size(800, 600)),
+  window("Snake", Size(800, 600)),
   renderer(window, Renderer::TypeFlag::ACCELERATED | Renderer::TypeFlag::PRESENT_VSYNC)
 {
 	srand((unsigned int)time(nullptr));
