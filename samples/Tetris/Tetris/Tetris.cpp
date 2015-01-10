@@ -6,6 +6,8 @@
 #include "Piece.h"
 #include "Square.h"
 
+#include <SDLplusplus/Image.h>
+
 using namespace std;
 using namespace SDL;
 
