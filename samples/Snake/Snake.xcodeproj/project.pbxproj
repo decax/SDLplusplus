@@ -289,6 +289,7 @@
 				B61D16611A5F6EE8005C55EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

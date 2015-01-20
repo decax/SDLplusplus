@@ -3,19 +3,30 @@
 using namespace SDL;
 using namespace std;
 
-Button::Button(Renderer &p_renderer)
-: renderer(p_renderer)
+Button::Button()
 {
 	size = Size(150, 20);
 	
-	textures[0] = Texture(renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, size);
-	textures[1] = Texture(renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, size);
+}
+
+void Button::SetRenderer(SDL::Renderer &p_renderer)
+{
+	Control::SetRenderer(p_renderer);
 	
-	auto oldTarget = renderer.GetRenderTarget();
-	renderer.SetRenderTarget(textures[0]);
-	renderer.SetDrawColor(Color::Gray);
-	renderer.FillRect(size);
-	renderer.SetRenderTarget(oldTarget);
+	label.SetRenderer(p_renderer);
+}
+
+
+void Button::CreateTextures()
+{
+	textures[0] = Texture(*renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, size);
+	textures[1] = Texture(*renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, size);
+	
+	auto oldTarget = renderer->GetRenderTarget();
+	renderer->SetRenderTarget(textures[0]);
+	renderer->SetDrawColor(Color::Gray);
+	renderer->FillRect(size);
+	renderer->SetRenderTarget(oldTarget);
 }
 
 void Button::SetPosition(const Point &p_position)
@@ -36,7 +47,10 @@ void Button::SetText(const std::string &p_text)
 
 void Button::Draw()
 {
-	renderer.Copy(textures[0], position);
-	label.Draw(renderer);
+	renderer->Copy(textures[0], position);
+	label.Draw();
 }
 
+void Button::OnClick(std::function<void()> p_onClick)
+{
+}

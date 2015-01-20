@@ -3,9 +3,11 @@
 #include <SDLplusplus/SDLplusplus.h>
 #include <SDLplusplus/TTF.h>
 
+#include "Control.h"
+
 #include <string>
 
-class Label
+class Label : public Control
 {
 public:
 	Label();
@@ -14,7 +16,7 @@ public:
 	
 	void SetFont(const std::string &filename);
 	void SetText(const std::string &text);
-	void Draw(SDL::Renderer &renderer);
+	void Draw() override;
 	
 private:
 	SDL::TTF::Font font;

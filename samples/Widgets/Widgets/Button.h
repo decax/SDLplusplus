@@ -1,23 +1,32 @@
 #pragma once
 
-#include <SDLplusplus/SDLplusplus.h>
-
+#include "Control.h"
 #include "Label.h"
 
-class Button
+#include <SDLplusplus/SDLplusplus.h>
+
+#include <functional>
+
+
+class Button : public Control
 {
 public:
-	Button(SDL::Renderer &renderer);
+	Button();
+	
+	void SetRenderer(SDL::Renderer &renderer) override;
+	
+	void CreateTextures();
 	
 	void SetFont(const std::string &filename);
 	void SetText(const std::string &string);
 	
 	void SetPosition(const SDL::Point &position);
 	
-	void Draw();
+	void Draw() override;
+	
+	void OnClick(std::function<void()> onClick);
 	
 private:
-	SDL::Renderer &renderer;
 	SDL::Size size;
 	SDL::Point position;
 	

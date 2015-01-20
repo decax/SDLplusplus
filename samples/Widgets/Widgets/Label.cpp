@@ -23,8 +23,8 @@ void Label::SetText(const string &p_text)
 	text = p_text;
 }
 
-void Label::Draw(Renderer &p_renderer)
+void Label::Draw()
 {
-	font.RenderTextBlended(p_renderer, text, position);
+	font.RenderTextBlended(*renderer, text, position);
 }
 

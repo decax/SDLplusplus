@@ -3,40 +3,12 @@
 
 #include <string>
 
+#include "GUI.h"
 #include "Label.h"
 #include "Button.h"
 
-class GUI
-{
-public:
-	GUI(SDL::Renderer &renderer);
-	
-	void Update();
-	void Draw();
-	
-private:
-	SDL::Renderer &renderer;
-	
-	SDL::TTF ttf;
-};
-
 using namespace SDL;
 using namespace std;
-
-GUI::GUI(Renderer &p_renderer)
-: renderer(p_renderer)
-{
-	ttf.Init();
-}
-
-void GUI::Update()
-{
-}
-
-void GUI::Draw()
-{
-
-}
 
 int main(int argc, char *argv[])
 {
@@ -44,18 +16,22 @@ int main(int argc, char *argv[])
 	Window window("Widgets", Size(800, 600));
 	Renderer renderer(window, Renderer::TypeFlag::SOFTWARE);
 
+	bool running = true;
+
 	GUI gui(renderer);
 	
 	Label label;
 	label.SetFont("Arial.ttf");
 	label.SetText("allo");
 	
-	Button button(renderer);
+	Button button;
 	button.SetFont("Arial.ttf");
 	button.SetText("click me");
 	button.SetPosition(Point(10, 100));
+	button.OnClick([&]() { running = false;} );
 	
-	bool running = true;
+	gui.AddControl(label);
+	gui.AddControl(button);
 	
 	while (running) {
 		
@@ -102,11 +78,8 @@ int main(int argc, char *argv[])
 		renderer.SetDrawColor(Color::Black);
 		renderer.Clear();
 		
-		gui.Draw();
-		
 		renderer.SetDrawColor(Color::White);
-		label.Draw(renderer);
-		button.Draw();
+		gui.Draw();
 		
 		renderer.Present();
 	}
