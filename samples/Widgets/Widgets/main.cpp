@@ -18,14 +18,12 @@ int main(int argc, char *argv[])
 
 	bool running = true;
 
-	GUI gui(renderer);
+	GUI gui(system, renderer);
 	
 	Label label;
-	label.SetFont("Arial.ttf");
 	label.SetText("allo");
 	
 	Button button;
-	button.SetFont("Arial.ttf");
 	button.SetText("click me");
 	button.SetPosition(Point(10, 100));
 	button.OnClick([&]() { running = false;} );
@@ -47,25 +45,6 @@ int main(int argc, char *argv[])
 				case Event::Type::QUIT:
 					running = false;
 					break;
-					
-				case Event::Type::KEY_DOWN:
-				case Event::Type::KEY_UP:
-				{
-					auto kbe = (const KeyboardEvent &)e;
-					
-					switch (kbe.GetScancode()) {
-							
-						case Scancode::ESCAPE:
-							running = false;
-							break;
-							
-						default:
-							// don't care
-							break;
-					}
-					
-					break;
-				}
 					
 				default:
 					// don't care

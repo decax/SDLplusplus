@@ -7,7 +7,6 @@
 
 #include <functional>
 
-
 class Button : public Control
 {
 public:
@@ -24,13 +23,14 @@ public:
 	
 	void Draw() override;
 	
+	void Release(bool trigger) override;
+	
 	void OnClick(std::function<void()> onClick);
 	
 private:
-	SDL::Size size;
-	SDL::Point position;
-	
 	Label label;
 	
 	SDL::Texture textures[2];
+	
+	std::function<void()> onClick;
 };
