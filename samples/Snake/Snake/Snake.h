@@ -36,4 +36,6 @@ private:
 	
 	static const int updateDelay = 100;
 	int nextUpdate;
+	
+	void OnKeyDown(const SDL::Event &event);
 };

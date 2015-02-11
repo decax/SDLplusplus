@@ -15,6 +15,9 @@ Snake::Snake()
 {
 	srand((unsigned int)time(nullptr));
 	
+	system.RegisterEvent(Event::QUIT, [&](const Event &) { running = false; });
+	system.RegisterEvent(Event::KEY_DOWN, bind(&Snake::OnKeyDown, this, placeholders::_1));
+
 	gridSizeInSquares = Size(GRID_WIDTH_IN_SQUARES, GRID_HEIGHT_IN_SQUARES);
 	
 	gridSize = Size(gridSizeInSquares.Width * Square::Width, gridSizeInSquares.Height * Square::Height);
@@ -25,6 +28,38 @@ Snake::Snake()
 	Square::CreateTextures(renderer);
 	
 	StartGame();
+}
+
+void Snake::OnKeyDown(const Event &event)
+{
+	auto kbe = (const KeyboardEvent &)event;
+	
+	switch (kbe.GetScancode()) {
+			
+		case Scancode::ESCAPE:
+			running = false;
+			break;
+			
+		case Scancode::LEFT:
+			player.SetDirection(Player::Direction::LEFT);
+			break;
+			
+		case Scancode::RIGHT:
+			player.SetDirection(Player::Direction::RIGHT);
+			break;
+			
+		case Scancode::DOWN:
+			player.SetDirection(Player::Direction::DOWN);
+			break;
+			
+		case Scancode::UP:
+			player.SetDirection(Player::Direction::UP);
+			break;
+			
+		default:
+			// don't care
+			break;
+	}
 }
 
 void Snake::StartGame()
@@ -39,58 +74,7 @@ void Snake::StartGame()
 void Snake::Run()
 {
 	while (running) {
-		system.PollEvent();
-		
-		auto events = system.Events;
-		
-		for (auto e : events) {
-			switch (e.GetType()) {
-					
-				case Event::Type::QUIT:
-					running = false;
-					break;
-					
-				case Event::Type::KEY_DOWN:
-				{
-					auto kbe = (const KeyboardEvent &)e;
-					
-					switch (kbe.GetScancode()) {
-							
-						case Scancode::ESCAPE:
-							running = false;
-							break;
-							
-						case Scancode::LEFT:
-							player.SetDirection(Player::Direction::LEFT);
-							break;
-							
-						case Scancode::RIGHT:
-							player.SetDirection(Player::Direction::RIGHT);
-							break;
-							
-						case Scancode::DOWN:
-							player.SetDirection(Player::Direction::DOWN);
-							break;
-							
-						case Scancode::UP:
-							player.SetDirection(Player::Direction::UP);
-							break;
-							
-						default:
-							// don't care
-							break;
-					}
-					
-					break;
-				}
-					
-				default:
-					// don't care
-					break;
-			}
-			
-			system.Events.clear(); // TODO: find a way of doing this automatically
-		}
+		system.Update();
 		
 		int now = system.GetTicks();
 		if (now >= nextUpdate)

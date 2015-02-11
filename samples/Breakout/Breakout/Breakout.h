@@ -19,6 +19,7 @@ public:
 	
 private:
 	void StartGame();
+	void OnKeyDown(const SDL::Event &event);
 	
 	SDL::System system;
 	SDL::Window window;

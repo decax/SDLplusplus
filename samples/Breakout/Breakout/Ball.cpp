@@ -66,6 +66,9 @@ void Ball::Collide(const list<Collider *> &colliders)
 				case Direction::RIGHT:
 					speed.x = -speed.x;
 					break;
+					
+				case Direction::NONE:
+					break;
 			}
 		}
 	}

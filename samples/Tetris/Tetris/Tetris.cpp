@@ -18,6 +18,9 @@ Tetris::Tetris()
 {
 	srand((unsigned int)time(nullptr));
 	
+	system.RegisterEvent(Event::QUIT, [&](const Event &) { running = false; });
+	system.RegisterEvent(Event::KEY_DOWN, bind(&Tetris::OnKeyDown, this, placeholders::_1));
+	
 	gridSizeInSquares = Size(GRID_WIDTH_IN_SQUARES, GRID_HEIGHT_IN_SQUARES);
 	
 	gridSize = Size(gridSizeInSquares.Width * Square::Width, gridSizeInSquares.Height * Square::Height);
@@ -43,66 +46,47 @@ void Tetris::StartGame()
 	running = true;
 }
 
+void Tetris::OnKeyDown(const Event &event)
+{
+	auto kbe = (const KeyboardEvent &)event;
+	
+	switch (kbe.GetScancode()) {
+			
+		case Scancode::ESCAPE:
+			running = false;
+			break;
+			
+		case Scancode::LEFT:
+			if (piece->Position.X > 0 && !piece->Collide(grid, piece->Position - Point(1, 0))) {
+				piece->Position.X--;
+			}
+			break;
+			
+		case Scancode::RIGHT:
+			if (piece->Position.X + piece->GetBounds().Size.Width < gridSizeInSquares.Width && // fixme: bounds should have y2 instead of width
+				!piece->Collide(grid, piece->Position + Point(1, 0))) {
+				piece->Position.X++;
+			}
+			break;
+			
+		case Scancode::DOWN:
+			MovePieceDown();
+			break;
+			
+		case Scancode::UP:
+			piece->Rotate();
+			break;
+			
+		default:
+			// don't care
+			break;
+	}
+}
+
 void Tetris::Run()
 {
 	while (running) {
-		system.PollEvent();
-		
-		auto events = system.Events;
-		
-		for (auto e : events) {
-			switch (e.GetType()) {
-					
-				case Event::Type::QUIT:
-					running = false;
-					break;
-					
-				case Event::Type::KEY_DOWN:
-				{
-					auto kbe = (const KeyboardEvent &)e;
-					
-					switch (kbe.GetScancode()) {
-							
-						case Scancode::ESCAPE:
-							running = false;
-							break;
-							
-						case Scancode::LEFT:
-							if (piece->Position.X > 0 && !piece->Collide(grid, piece->Position - Point(1, 0))) {
-								piece->Position.X--;
-							}
-							break;
-							
-						case Scancode::RIGHT:
-							if (piece->Position.X + piece->GetBounds().Size.Width < gridSizeInSquares.Width && // fixme: bounds should have y2 instead of width
-								!piece->Collide(grid, piece->Position + Point(1, 0))) {
-								piece->Position.X++;
-							}
-							break;
-							
-						case Scancode::DOWN:
-							MovePieceDown();
-							break;
-							
-						case Scancode::UP:
-							piece->Rotate();
-							break;
-							
-						default:
-							// don't care
-							break;
-					}
-					
-					break;
-				}
-					
-				default:
-					// don't care
-					break;
-			}
-			
-			system.Events.clear(); // TODO: find a way of doing this automatically
-		}
+		system.Update();
 		
 		int now = system.GetTicks();
 		if (now >= nextUpdate)
@@ -135,7 +119,7 @@ void Tetris::Run()
 			}
 		}
 		
-		font.RenderTextBlended(renderer, "salut", Point(0, 0));
+		//font.RenderTextBlended(renderer, "salut", Point(0, 0));
 		
 		renderer.Present();
 	}

@@ -13,6 +13,7 @@ public:
 
 private:
 	void StartGame();
+	void OnKeyDown(const SDL::Event &event);
 	
 	Piece *GetNextPiece();
 	void MovePieceDown();
