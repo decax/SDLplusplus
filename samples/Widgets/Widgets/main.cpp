@@ -6,6 +6,7 @@
 #include "GUI.h"
 #include "Label.h"
 #include "Button.h"
+#include "Picture.h"
 
 using namespace SDL;
 using namespace std;
@@ -18,6 +19,9 @@ int main(int argc, char *argv[])
 
 	bool running = true;
 
+	system.RegisterEvent(SDL::Event::QUIT,     [&](const Event &)  { running = false; });
+	system.RegisterEvent(SDL::Event::KEY_DOWN, [&](const Event &e) { if (((const KeyboardEvent &)e).GetScancode() == Scancode::ESCAPE) running = false; });
+	
 	GUI gui(renderer);
 	
 	Label label;
@@ -30,50 +34,19 @@ int main(int argc, char *argv[])
 	button.SetPosition(Point(10, 100));
 	button.OnClick([&]() { running = false;} );
 	
+	Image coverImage;
+	
+	Picture picture;
+	picture.SetImage(coverImage.Load("Zelda-Front.jpg"));
+	picture.position = window.GetSize().Center();
+	
 	gui.AddControl(label);
 	gui.AddControl(button);
+	gui.AddControl(picture);
 	
 	while (running) {
-		
 		gui.Update();
-		
-		system.PollEvent();
-		
-		auto events = system.Events;
-		
-		for (auto e : events) {
-			switch (e.GetType()) {
-					
-				case Event::Type::QUIT:
-					running = false;
-					break;
-					
-				case Event::Type::KEY_DOWN:
-				case Event::Type::KEY_UP:
-				{
-					auto kbe = (const KeyboardEvent &)e;
-					
-					switch (kbe.GetScancode()) {
-							
-						case Scancode::ESCAPE:
-							running = false;
-							break;
-							
-						default:
-							// don't care
-							break;
-					}
-					
-					break;
-				}
-					
-				default:
-					// don't care
-					break;
-			}
-			
-			system.Events.clear(); // TODO: find a way of doing this automatically
-		}
+		system.Update();
 
 		renderer.SetDrawColor(Color::Black);
 		renderer.Clear();

@@ -15,7 +15,7 @@ public:
 	
 	void SetRenderer(SDL::Renderer &renderer) override;
 	
-	void CreateTextures();
+	void CreateTextures() override;
 	
 	void SetFont(const std::string &filename);
 	void SetText(const std::string &string);
