@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4484FCB61A8BB6380031A7E5 /* Picture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4484FCB41A8BB6380031A7E5 /* Picture.cpp */; };
 		44E6C64B1A64C18200977484 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44E6C64A1A64C18200977484 /* main.cpp */; };
 		44E6C64D1A64C1AC00977484 /* SDLplusplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E6C64C1A64C1AC00977484 /* SDLplusplus.framework */; };
 		44E6C6511A64C5F400977484 /* Label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44E6C64F1A64C5F400977484 /* Label.cpp */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4484FCB41A8BB6380031A7E5 /* Picture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Picture.cpp; sourceTree = "<group>"; };
+		4484FCB51A8BB6380031A7E5 /* Picture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Picture.h; sourceTree = "<group>"; };
 		44E6C6271A64C14C00977484 /* Widgets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Widgets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E6C62B1A64C14C00977484 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44E6C64A1A64C18200977484 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -64,12 +67,14 @@
 				44E6C64A1A64C18200977484 /* main.cpp */,
 				44F7CEC31A6CC7DA007E00F6 /* GUI.cpp */,
 				44F7CEC41A6CC7DA007E00F6 /* GUI.h */,
-				44F7CEC11A6CC732007E00F6 /* Control.h */,
 				44F7CEC61A6CD035007E00F6 /* Control.cpp */,
+				44F7CEC11A6CC732007E00F6 /* Control.h */,
 				44E6C64F1A64C5F400977484 /* Label.cpp */,
 				44E6C6501A64C5F400977484 /* Label.h */,
 				44E6C6521A66171200977484 /* Button.cpp */,
 				44E6C6531A66171200977484 /* Button.h */,
+				4484FCB41A8BB6380031A7E5 /* Picture.cpp */,
+				4484FCB51A8BB6380031A7E5 /* Picture.h */,
 				44E6C64E1A64C1AF00977484 /* Frameworks */,
 				44E6C62A1A64C14C00977484 /* Supporting Files */,
 			);
@@ -161,6 +166,7 @@
 			files = (
 				44E6C6511A64C5F400977484 /* Label.cpp in Sources */,
 				44F7CEC71A6CD035007E00F6 /* Control.cpp in Sources */,
+				4484FCB61A8BB6380031A7E5 /* Picture.cpp in Sources */,
 				44F7CEC51A6CC7DA007E00F6 /* GUI.cpp in Sources */,
 				44E6C64B1A64C18200977484 /* main.cpp in Sources */,
 				44E6C6541A66171200977484 /* Button.cpp in Sources */,

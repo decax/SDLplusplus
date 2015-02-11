@@ -21,18 +21,49 @@ Surface::Surface(SDL_Surface *p_surface)
 	surface = p_surface;
 }
 	
-Surface::Surface(Surface &&other)
+Surface::Surface(const Surface &p_other)
 {
-	surface = other.surface;
+	auto otherSurface = p_other.surface;
+	auto format = otherSurface->format;
 	
-	other.surface = nullptr;
+	surface = SDL_CreateRGBSurfaceFrom(otherSurface->pixels, otherSurface->w, otherSurface->h,
+									   format->BitsPerPixel, otherSurface->pitch,
+									   format->Rmask, format->Gmask, format->Bmask, format->Amask);
+}
+	
+Surface::Surface(Surface &&p_other)
+{
+	surface = p_other.surface;
+	
+	p_other.surface = nullptr;
 }
 
 Surface::~Surface()
 {
 	SDL_FreeSurface(surface);
 }
+
+const Surface &Surface::operator =(const Surface &p_surface)
+{
+	auto otherSurface = p_surface.surface;
+	auto format = otherSurface->format;
 	
+	surface = SDL_CreateRGBSurfaceFrom(otherSurface->pixels, otherSurface->w, otherSurface->h,
+									   format->BitsPerPixel, otherSurface->pitch,
+									   format->Rmask, format->Gmask, format->Bmask, format->Amask);
+	
+	return *this;
+}
+	
+const Surface &Surface::operator =(Surface &&p_surface)
+{
+	surface = p_surface.surface;
+	
+	p_surface.surface = nullptr;
+	
+	return *this;
+}
+
 void Surface::ConvertPixelFormat(PixelFormat p_pixelFormat)
 {
 	auto newSurface = SDL_ConvertSurfaceFormat(surface, p_pixelFormat, 0);

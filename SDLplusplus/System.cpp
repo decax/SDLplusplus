@@ -2,6 +2,8 @@
 
 namespace SDL {
 
+using namespace std;
+	
 System::System(SubSystem p_subSystem)
 {
 	Init(p_subSystem);
@@ -9,6 +11,8 @@ System::System(SubSystem p_subSystem)
 
 System::~System()
 {
+	registeredEvents.clear();
+
 	SDL_Quit();
 }
 
@@ -27,14 +31,30 @@ void System::QuitSubSystem(SubSystem p_subSystem)
 {
 	SDL_QuitSubSystem((int)p_subSystem);
 }
+	
+void System::RegisterEvent(Event::Type eventType, function<void(const Event &)> callback)
+{
+	registeredEvents[eventType] = callback;
+}
 
-void System::PollEvent()
+void System::Update()
+{
+	PollEvents();
+}
+	
+void System::PollEvents()
 {
 	SDL_Event event;
 	
-	SDL_PollEvent(&event);
-	
-	Events.push_back(Event(event));
+	while (SDL_PollEvent(&event)) {
+		Event e(event);
+		Events.push_back(e);
+		
+		auto it = registeredEvents.find(e.GetType());
+		if (it != registeredEvents.end()) {
+			(it->second)(e);
+		}
+	}
 }
 
 void System::Delay(uint32_t p_milliseconds) const

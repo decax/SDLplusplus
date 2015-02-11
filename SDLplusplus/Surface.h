@@ -27,11 +27,15 @@ public:
 		DONT_FREE       = SDL_DONTFREE
 	};
 	
-	Surface(PixelFormat pixelFormat, const Size &size);
-	
-	Surface(SDL_Surface *surface);
+	Surface() {}
+	Surface(const Surface &surface);
 	Surface(Surface &&other);
+	Surface(PixelFormat pixelFormat, const Size &size);
+	Surface(SDL_Surface *surface);
 	~Surface();
+	
+	const Surface &operator =(const Surface &surface);
+	const Surface &operator =(Surface &&surface);
 	
 	void ConvertPixelFormat(PixelFormat pixelFormat);
 	PixelFormat GetPixelFormat() const;

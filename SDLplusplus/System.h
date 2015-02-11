@@ -13,6 +13,7 @@
 #include <functional>
 #include <list>
 #include <string>
+#include <map>
 
 namespace SDL {
 
@@ -43,7 +44,7 @@ inline int DisplayMode::GetRefreshRate() const
 {
 	return displayMode.refresh_rate;
 }
-	
+
 class System
 {
 public:
@@ -67,8 +68,12 @@ public:
 	void InitSubSystem(SubSystem subSystem);
 	void QuitSubSystem(SubSystem subSystem);
 	
-	void PollEvent();
+	void Update();
+	
+	void PollEvents();
 	std::list<Event> Events;
+	
+	void RegisterEvent(Event::Type, std::function<void(const Event &)>);
 	
 	uint32_t GetTicks() const;
 	void Delay(uint32_t milliseconds) const;
@@ -79,6 +84,9 @@ public:
 	
 //	SDL_TimerID AddTimer(uint32_t interval, std::function<void(void)> callback) const;
 //	void RemoveTimer(SDL_TimerID timerID) const;
+	
+private:
+	std::map<Event::Type, std::function<void(const Event &)>> registeredEvents;
 };
 	
 inline System::SubSystem operator|(System::SubSystem a, System::SubSystem b) { return System::SubSystem(int(a) | int(b)); }

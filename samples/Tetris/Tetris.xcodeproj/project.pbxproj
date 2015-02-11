@@ -14,16 +14,6 @@
 		442280851A5A5F7F001B980B /* SDLplusplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442280841A5A5F7F001B980B /* SDLplusplus.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B6ACC9D01A5B91FD00C9CEBF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B6ACC9CC1A5B91FD00C9CEBF /* SDLplusplus.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 44227FD01A5A55A1001B980B;
-			remoteInfo = SDLplusplus;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		442280561A5A5EBB001B980B /* Tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tetris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4422805A1A5A5EBB001B980B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,7 +25,6 @@
 		4422807E1A5A5F62001B980B /* Tetris.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tetris.cpp; sourceTree = "<group>"; };
 		4422807F1A5A5F62001B980B /* Tetris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tetris.h; sourceTree = "<group>"; };
 		442280841A5A5F7F001B980B /* SDLplusplus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDLplusplus.framework; path = /Library/Frameworks/SDLplusplus.framework; sourceTree = "<absolute>"; };
-		B6ACC9CC1A5B91FD00C9CEBF /* SDLplusplus.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDLplusplus.xcodeproj; path = ../../SDLplusplus.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +42,6 @@
 		4422804D1A5A5EBB001B980B = {
 			isa = PBXGroup;
 			children = (
-				B6ACC9CC1A5B91FD00C9CEBF /* SDLplusplus.xcodeproj */,
 				442280581A5A5EBB001B980B /* Tetris */,
 				442280571A5A5EBB001B980B /* Products */,
 			);
@@ -97,14 +85,6 @@
 				442280841A5A5F7F001B980B /* SDLplusplus.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B6ACC9CD1A5B91FD00C9CEBF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B6ACC9D11A5B91FD00C9CEBF /* SDLplusplus.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,28 +132,12 @@
 			mainGroup = 4422804D1A5A5EBB001B980B;
 			productRefGroup = 442280571A5A5EBB001B980B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = B6ACC9CD1A5B91FD00C9CEBF /* Products */;
-					ProjectRef = B6ACC9CC1A5B91FD00C9CEBF /* SDLplusplus.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				442280551A5A5EBB001B980B /* Tetris */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		B6ACC9D11A5B91FD00C9CEBF /* SDLplusplus.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SDLplusplus.framework;
-			remoteRef = B6ACC9D01A5B91FD00C9CEBF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		442280541A5A5EBB001B980B /* Resources */ = {
