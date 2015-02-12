@@ -12,8 +12,6 @@ class Label : public Control
 	friend class Button;
 	
 public:
-	Label() {}
-	
 	void CreateTextures() override;
 	
 	void SetFont(const std::string &filename);

@@ -31,12 +31,13 @@ public:
 	};
 	
 	Texture() {}
+	Texture(const Texture &texture);
 	Texture(Texture &&texture);
-	Texture(const Renderer &renderer);
-	Texture(const Renderer &renderer, const Surface &surface);
-	Texture(const Renderer &renderer, PixelFormat pixelFormat, Access access, const Size &size);
-	Texture(const Renderer &renderer, const std::string &filename);
-	Texture(const Renderer &renderer, SDL_Texture *texture); // fixme: this shouldn't be public
+	Texture(Renderer &renderer);
+	Texture(Renderer &renderer, const Surface &surface);
+	Texture(Renderer &renderer, PixelFormat pixelFormat, Access access, const Size &size);
+	Texture(Renderer &renderer, const std::string &filename);
+	Texture(Renderer &renderer, SDL_Texture *texture); // fixme: this shouldn't be public
 	~Texture();
 	
 	Texture& operator =(const Texture &texture);
@@ -56,7 +57,7 @@ public:
 	void SetColorMod(const Color &color);
 	
 private:
-	const Renderer *renderer;
+	Renderer *renderer;
 	
 	SDL_Texture *texture;
 };

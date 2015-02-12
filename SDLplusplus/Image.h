@@ -34,7 +34,7 @@ public:
 	void Quit();
 	
 	Surface Load(const std::string &filename);
-	Texture LoadTexture(const Renderer &renderer, const std::string &filename);
+	Texture LoadTexture(Renderer &renderer, const std::string &filename);
 	
 	void SavePNG(const Surface &surface, const std::string &filename);
 };

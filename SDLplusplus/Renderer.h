@@ -60,7 +60,7 @@ public:
 	void SetClipRect(const Rect &rect); // FIXME: doesn't work
 	Rect GetClipRect() const;
 	
-	Texture GetRenderTarget() const;
+	Texture GetRenderTarget();
 	void SetRenderTarget(const Texture &texture);
 	
 	enum Flip
@@ -124,12 +124,12 @@ inline const Size &Renderer::Info::GetMaxTextureSize() const
 
 inline void Renderer::Copy(const Texture &p_texture, Flip p_flip)
 {
-	Copy(p_texture, p_texture.GetSize(), GetOutputSize(), 0, p_texture.GetSize().Center(), p_flip);
+	Copy(p_texture, p_texture.GetSize(), GetOutputSize(), 0, p_texture.GetSize() / 2, p_flip);
 }
 	
 inline void Renderer::Copy(const Texture &p_texture, double p_angle, Flip p_flip)
 {
-	Copy(p_texture, p_texture.GetSize(), GetOutputSize(), p_angle, p_texture.GetSize().Center(), p_flip);
+	Copy(p_texture, p_texture.GetSize(), GetOutputSize(), p_angle, p_texture.GetSize() / 2, p_flip);
 }
 
 inline void Renderer::Copy(const Texture &p_texture, double p_angle, const Point &p_center, Flip p_flip)
@@ -153,14 +153,14 @@ inline void Renderer::Copy(const Texture &p_texture, const Rect &p_destRect)
 
 inline void Renderer::Copy(const Texture &p_texture, double p_angle)
 {
-	Copy(p_texture, p_angle, p_texture.GetSize().Center());
+	Copy(p_texture, p_angle, p_texture.GetSize() / 2);
 }
 	
 inline void Renderer::Copy(const Texture &p_texture, const Rect &p_dstRect, double p_angle)
 {
 	Rect textureRect(p_texture.GetSize());
 	
-	Copy(p_texture, textureRect, p_dstRect, p_angle, p_texture.GetSize().Center());
+	Copy(p_texture, textureRect, p_dstRect, p_angle, p_texture.GetSize() / 2);
 }
 
 inline void Renderer::Copy(const Texture &p_texture, const Rect &p_dstRect, double p_angle, const Point &p_center)

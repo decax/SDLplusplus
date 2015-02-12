@@ -39,7 +39,7 @@ void Renderer::Present()
 	SDL_RenderPresent(renderer);
 }
 	
-Texture Renderer::GetRenderTarget() const
+Texture Renderer::GetRenderTarget()
 {
 	return Texture(*this, SDL_GetRenderTarget(renderer));
 }

@@ -7,6 +7,7 @@
 #include "Label.h"
 #include "Button.h"
 #include "Picture.h"
+#include "List.h"
 
 using namespace SDL;
 using namespace std;
@@ -29,7 +30,7 @@ int main(int argc, char *argv[])
 	label.SetText("allo");
 	label.backgroundColor = Color::Red;
 	label.color = Color::Black;
-	
+
 	Button button;
 	button.SetFont("Arial.ttf");
 	button.SetText("click me");
@@ -40,11 +41,17 @@ int main(int argc, char *argv[])
 	
 	Picture picture;
 	picture.SetImage(coverImage.Load("Zelda-Front.jpg"));
-	picture.SetPosition(window.GetSize().Center());
+	picture.SetPosition(window.GetSize() / 2);
+	
+	List listConsoles;
+	listConsoles.AddCellLabel("NES");
+	listConsoles.AddCellLabel("Genesis");
+	listConsoles.SetPosition(Point(0, 200));
 	
 	gui.AddControl(label);
 	gui.AddControl(button);
 	gui.AddControl(picture);
+	gui.AddControl(listConsoles);
 	
 	while (running) {
 		gui.Update();

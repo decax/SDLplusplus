@@ -34,7 +34,7 @@ Surface Image::Load(const std::string &p_filename)
 	return Surface(IMG_Load(p_filename.c_str()));
 }
 	
-Texture Image::LoadTexture(const Renderer &p_renderer, const std::string &p_filename)
+Texture Image::LoadTexture(Renderer &p_renderer, const std::string &p_filename)
 {
 	return Texture(p_renderer, IMG_LoadTexture(p_renderer.GetSDLRenderer(), p_filename.c_str()));
 }

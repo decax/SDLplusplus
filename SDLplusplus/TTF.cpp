@@ -32,15 +32,39 @@ TTF::Font::Font(const std::string &p_filename, int p_pointSize)
 {
 	Open(p_filename, p_pointSize);
 }
+
+TTF::Font::Font(const Font &p_font)
+{
+	Open(p_font.filename.c_str(), p_font.pointSize);
+}
+	
+TTF::Font::Font(Font &&p_font)
+{
+	font = p_font.font;
+	
+	p_font.font = nullptr;
+}
 	
 TTF::Font::~Font()
 {
 	TTF_CloseFont(font);
 }
+
+TTF::Font TTF::Font::operator =(Font &&p_font)
+{
+	font = p_font.font;
+	p_font.font = nullptr;
+	
+	return *this;
+}
 	
 void TTF::Font::Open(const std::string &p_filename, int p_pointSize)
 {
 	font = TTF_OpenFont(p_filename.c_str(), p_pointSize);
+	
+	// we need to save this for the copy constructor
+	filename = p_filename;
+	pointSize = p_pointSize;
 }
 	
 void TTF::Font::SetStyle(Style p_style)

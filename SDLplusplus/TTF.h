@@ -41,7 +41,12 @@ public:
 		
 		Font();
 		Font(const std::string &file, int pointSize);
+		
+		Font(const Font &font);
+		Font(Font &&font);
 		~Font();
+		
+		Font operator =(Font &&font);
 		
 		void Open(const std::string &file, int pointSize);
 
@@ -74,6 +79,9 @@ public:
 		
 	private:
 		TTF_Font *font;
+		
+		std::string filename;
+		int pointSize;
 		
 		std::map<char, Texture> glyphTextures;
 	};

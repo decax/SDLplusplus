@@ -45,8 +45,8 @@ void Breakout::StartGame()
 		}
 	}
 
-	player.SetPosition(Point(gridSize.Center().X, gridSize.Height - Player::Height * 2));
-	ball.SetPosition(Point(gridSize.Center().X, gridSize.Height - 50));
+	player.SetPosition(Point((gridSize / 2).Width, gridSize.Height - Player::Height * 2));
+	ball.SetPosition(Point((gridSize / 2).Height, gridSize.Height - 50));
 	
 	lastTime = system.GetTicks();
 	nextUpdate = system.GetTicks() + updateDelay;

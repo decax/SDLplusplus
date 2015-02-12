@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Point.h"
-
 namespace SDL {
 
 class Size
@@ -13,7 +11,7 @@ public:
 	bool operator ==(const Size &other) const;
 	bool operator !=(const Size &other) const;
 	
-	Point Center() const;
+	Size operator /(int factor) const;
 	
 	int Width;
 	int Height;
@@ -35,9 +33,10 @@ inline bool Size::operator !=(const Size &p_other) const
 	return Width != p_other.Width || Height != p_other.Height;
 }
 	
-inline Point Size::Center() const
+inline Size Size::operator /(int p_factor) const
 {
-	return Point(Width / 2, Height / 2);
+	return Size(Width / p_factor, Height / p_factor);
 }
+
 
 }
