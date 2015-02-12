@@ -22,11 +22,13 @@ int main(int argc, char *argv[])
 	system.RegisterEvent(SDL::Event::QUIT,     [&](const Event &)  { running = false; });
 	system.RegisterEvent(SDL::Event::KEY_DOWN, [&](const Event &e) { if (((const KeyboardEvent &)e).GetScancode() == Scancode::ESCAPE) running = false; });
 	
-	GUI gui(renderer);
+	GUI gui(system, renderer);
 	
 	Label label;
 	label.SetFont("Arial.ttf");
 	label.SetText("allo");
+	label.backgroundColor = Color::Red;
+	label.color = Color::Black;
 	
 	Button button;
 	button.SetFont("Arial.ttf");
@@ -38,7 +40,7 @@ int main(int argc, char *argv[])
 	
 	Picture picture;
 	picture.SetImage(coverImage.Load("Zelda-Front.jpg"));
-	picture.position = window.GetSize().Center();
+	picture.SetPosition(window.GetSize().Center());
 	
 	gui.AddControl(label);
 	gui.AddControl(button);

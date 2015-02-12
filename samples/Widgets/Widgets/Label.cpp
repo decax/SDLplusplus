@@ -3,14 +3,9 @@
 using namespace SDL;
 using namespace std;
 
-Label::Label()
+void Label::CreateTextures()
 {
-	position = Point(0, 0);
-}
-
-void Label::SetPosition(const Point &p_position)
-{
-	position = p_position;
+	// TODO: optimization
 }
 
 void Label::SetFont(const string &p_filename)
@@ -21,10 +16,18 @@ void Label::SetFont(const string &p_filename)
 void Label::SetText(const string &p_text)
 {
 	text = p_text;
+
+	UpdateTextSize();
 }
 
-void Label::Draw()
+void Label::DrawForeground()
 {
-	font.RenderTextBlended(*renderer, text, position);
+	Control::DrawForeground();
+	
+	font.RenderTextBlended(*renderer, text, GetPosition(), color);
 }
 
+void Label::UpdateTextSize()
+{
+	textSize = font.GetSize(text);
+}

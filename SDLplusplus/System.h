@@ -12,6 +12,7 @@
 
 #include <functional>
 #include <list>
+#include <vector>
 #include <string>
 #include <map>
 
@@ -70,6 +71,15 @@ public:
 	
 	void Update();
 	
+	enum EventAction
+	{
+		Add  = SDL_ADDEVENT,
+		Peek = SDL_PEEKEVENT,
+		Get  = SDL_GETEVENT
+	};
+	
+	void PumpEvents();
+	int PeepEvents(Event *events, int numEvents, EventAction eventAction, Event::Type minType, Event::Type maxType);
 	void PollEvents();
 	std::list<Event> Events;
 	

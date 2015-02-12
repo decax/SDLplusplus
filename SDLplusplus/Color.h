@@ -22,6 +22,9 @@ public:
 	
 	Color(uint32_t hexCode);
 	
+	bool operator ==(const Color &color) const;
+	bool operator !=(const Color &color) const;
+	
 	Color Darken(float percentage) const;
 	Color Lighten(float percentage) const;
 	
@@ -73,6 +76,8 @@ public:
 	static Color Green;
 	static Color Magenta;
 	static Color Gray;
+	
+	static Color Transparent;
 };
 	
 inline Color::Color(uint8_t p_r, uint8_t p_g, uint8_t p_b, uint8_t p_a)
@@ -101,6 +106,16 @@ inline Color::Color(float p_r, float p_g, float p_b)
 inline Color::Color(float p_r, float p_g, float p_b, float p_a)
 : Color((uint8_t)(p_r * 255), (uint8_t)(p_g * 255), (uint8_t)(p_b * 255), (uint8_t)(p_a * 255))
 {
+}
+	
+inline bool Color::operator ==(const Color &p_color) const
+{
+	return R == p_color.R && G == p_color.G && B == p_color.B && A == p_color.A;
+}
+
+inline bool Color::operator !=(const Color &p_color) const
+{
+	return R != p_color.R || G != p_color.G || B != p_color.B || A != p_color.A;
 }
 	
 inline Color Color::Darken(float percentage) const

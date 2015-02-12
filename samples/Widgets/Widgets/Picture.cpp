@@ -13,7 +13,9 @@ void Picture::CreateTextures()
 	texture = Texture(*renderer, image);
 }
 
-void Picture::Draw()
+void Picture::DrawForeground()
 {
-	renderer->Copy(texture, Rect(position, Size(128, 128)));
+	Control::DrawForeground();
+	
+	renderer->Copy(texture, Rect(GetPosition(), Size(128, 128)));
 }

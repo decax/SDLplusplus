@@ -12,10 +12,9 @@ public:
 	
 	void SetImage(const SDL::Surface &image);
 	
-	void Draw() override;
+protected:
+	void DrawForeground() override;
 	
-	SDL::Point position;
-
 private:
 	SDL::Surface image;
 	SDL::Texture texture;

@@ -11,5 +11,8 @@ Color Color::Magenta(0xFF00FF);
 Color Color::Cyan(0x00FFFF);
 Color Color::Brown(0xA52A2A);
 Color Color::Gray(0x808080);
+
+Color Color::Transparent(0.0f, 0.0f, 0.0f, 0.0f);
+
 	
 }

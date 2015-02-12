@@ -42,6 +42,16 @@ void System::Update()
 	PollEvents();
 }
 	
+void System::PumpEvents()
+{
+	SDL_PumpEvents();
+}
+
+int System::PeepEvents(Event *p_events, int p_numEvents, EventAction p_eventAction, Event::Type p_minType, Event::Type p_maxType)
+{
+	return SDL_PeepEvents((SDL_Event *)p_events, p_numEvents, (SDL_eventaction)p_eventAction, p_minType, p_maxType);
+}
+	
 void System::PollEvents()
 {
 	SDL_Event event;

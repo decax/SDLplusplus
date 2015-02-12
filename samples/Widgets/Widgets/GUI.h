@@ -10,7 +10,7 @@
 class GUI
 {
 public:
-	GUI(SDL::Renderer &renderer);
+	GUI(SDL::System &system, SDL::Renderer &renderer);
 	
 	void AddControl(Control &control);
 	
@@ -18,9 +18,12 @@ public:
 	void Draw();
 	
 private:
+	SDL::System &system;
 	SDL::Renderer &renderer;
 	
 	SDL::TTF ttf;
 	
 	std::list<Control *> controls;
+	Control *hoveredControl;
+	Control *pressedControl;
 };

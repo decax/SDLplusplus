@@ -170,7 +170,7 @@ Surface TTF::Font::RenderTextBlended(const std::wstring &p_text, const SDL::Colo
 }
 	
 // Cached glyph version
-void TTF::Font::RenderTextBlended(Renderer &p_renderer, const std::string &p_text, const Point &p_position)
+void TTF::Font::RenderTextBlended(Renderer &p_renderer, const std::string &p_text, const Point &p_position, const Color &p_color)
 {
 	assert(font != nullptr);
 	
@@ -186,7 +186,7 @@ void TTF::Font::RenderTextBlended(Renderer &p_renderer, const std::string &p_tex
 		auto it = glyphTextures.find(c);
 		if (it == glyphTextures.end()) {
 			// add the glyph
-			glyphTextures[c] = Texture(p_renderer, RenderGlyphBlended(c, Color::White));
+			glyphTextures[c] = Texture(p_renderer, RenderGlyphBlended(c, p_color));
 			texture = &glyphTextures[c];
 		}
 		else {

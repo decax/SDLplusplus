@@ -9,19 +9,24 @@
 
 class Label : public Control
 {
-public:
-	Label();
+	friend class Button;
 	
-	void SetPosition(const SDL::Point &position);
+public:
+	Label() {}
+	
+	void CreateTextures() override;
 	
 	void SetFont(const std::string &filename);
 	void SetText(const std::string &text);
-	void Draw() override;
 	
+protected:
+	void DrawForeground() override;
+
 private:
 	SDL::TTF::Font font;
 	
 	std::string text;
 	
-	SDL::Point position;
+	SDL::Size textSize;
+	void UpdateTextSize();
 };

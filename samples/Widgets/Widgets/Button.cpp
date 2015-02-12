@@ -1,12 +1,17 @@
 #include "Button.h"
 
+#include <iostream>
+
 using namespace SDL;
 using namespace std;
 
 Button::Button()
 {
-	size = Size(150, 20);
+	state = State::NORMAL;
+
+	clickedCallback = nullptr;
 	
+	rect.Size = Size(150, 20);
 }
 
 void Button::SetRenderer(SDL::Renderer &p_renderer)
@@ -16,23 +21,57 @@ void Button::SetRenderer(SDL::Renderer &p_renderer)
 	label.SetRenderer(p_renderer);
 }
 
-
 void Button::CreateTextures()
 {
-	textures[0] = Texture(*renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, size);
-	textures[1] = Texture(*renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, size);
+	for (int i = 0; i < 4; i++) {
+		textures[i] = Texture(*renderer, PixelFormat::ARGB_8888, Texture::Access::TARGET, rect.Size);
+	}
 	
 	auto oldTarget = renderer->GetRenderTarget();
-	renderer->SetRenderTarget(textures[0]);
-	renderer->SetDrawColor(Color::Gray);
-	renderer->FillRect(size);
+	
+	auto color = Color::Gray;
+	
+	color = Color::Gray.Darken(0.20f);
+
+	renderer->SetRenderTarget(textures[State::NORMAL]);
+	renderer->SetDrawColor(color);
+	renderer->FillRect(rect.Size);
+
+	color = Color::Gray.Darken(0.10f);
+	
+	renderer->SetRenderTarget(textures[State::PRESSED]);
+	renderer->SetDrawColor(color);
+	renderer->FillRect(rect.Size);
+
+	color = Color::Gray;
+	
+	renderer->SetRenderTarget(textures[State::HOVERED]);
+	renderer->SetDrawColor(color);
+	renderer->FillRect(rect.Size);
+	
+	color = Color::Gray.Darken(0.30);
+
+	renderer->SetRenderTarget(textures[State::DEACTIVATED]);
+	renderer->SetDrawColor(color);
+	renderer->FillRect(rect.Size);
+
 	renderer->SetRenderTarget(oldTarget);
+	
+	label.Control::CreateTextures();
 }
 
 void Button::SetPosition(const Point &p_position)
 {
-	position = p_position;
-	label.SetPosition(p_position);
+	Control::SetPosition(p_position);
+	
+	UpdateLabelPosition();
+}
+
+void Button::UpdateLabelPosition()
+{
+	auto newPos = Point((rect.Size.Width - label.textSize.Width) / 2, (rect.Size.Height - label.textSize.Height) / 2);
+	
+	label.SetPosition(GetPosition() + newPos);
 }
 
 void Button::SetFont(const std::string &p_filename)
@@ -43,14 +82,51 @@ void Button::SetFont(const std::string &p_filename)
 void Button::SetText(const std::string &p_text)
 {
 	label.SetText(p_text);
+
+	UpdateLabelPosition();
 }
 
-void Button::Draw()
+void Button::DrawBackground()
 {
-	renderer->Copy(textures[0], position);
+	Control::DrawBackground();
+
+	renderer->Copy(textures[state], GetPosition());
+}
+
+void Button::DrawForeground()
+{
+	Control::DrawForeground();
+	
 	label.Draw();
+}
+
+void Button::Hover(bool p_hovered)
+{
+	state = p_hovered ? State::HOVERED : State::NORMAL;
+}
+
+void Button::Press()
+{
+	state = State::PRESSED;
+}
+
+void Button::Release(bool p_clicked)
+{
+	state = State::NORMAL;
+
+	if (p_clicked) {
+		Click();
+	}
+}
+
+void Button::Click()
+{
+	if (clickedCallback) {
+		clickedCallback();
+	}
 }
 
 void Button::OnClick(std::function<void()> p_onClick)
 {
+	clickedCallback = p_onClick;
 }

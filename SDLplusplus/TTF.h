@@ -70,7 +70,7 @@ public:
 		Surface RenderTextBlended(const std::string &text, const SDL::Color &color);
 		Surface RenderTextBlended(const std::wstring &text, const SDL::Color &color);
 		
-		void RenderTextBlended(Renderer &renderer, const std::string &text, const Point &position);
+		void RenderTextBlended(Renderer &renderer, const std::string &text, const Point &position, const Color &color);
 		
 	private:
 		TTF_Font *font;
