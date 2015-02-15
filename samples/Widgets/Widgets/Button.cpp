@@ -7,11 +7,11 @@ using namespace std;
 
 Button::Button()
 {
+	SetSize(Size(150, 20));
+
 	state = State::NORMAL;
 
 	clickedCallback = nullptr;
-	
-	rect.Size = Size(150, 20);
 }
 
 void Button::SetRenderer(SDL::Renderer &p_renderer)

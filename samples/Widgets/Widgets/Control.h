@@ -12,6 +12,8 @@ public:
 	
 	virtual void SetPosition(const SDL::Point &position);
 	virtual SDL::Point GetPosition() const;
+	virtual void SetSize(const SDL::Size &size);
+	virtual SDL::Size GetSize() const;
 	
 	const SDL::Rect &GetRect() const;
 	
@@ -34,6 +36,8 @@ protected:
 	
 	SDL::Renderer *renderer;
 	
+	bool autoSize;
+	
 	SDL::Rect rect;
 };
 
@@ -45,6 +49,16 @@ inline void Control::SetPosition(const SDL::Point &p_position)
 inline SDL::Point Control::GetPosition() const
 {
 	return rect.Position;
+}
+
+inline void Control::SetSize(const SDL::Size &p_size)
+{
+	rect.Size = p_size;
+}
+
+inline SDL::Size Control::GetSize() const
+{
+	return rect.Size;
 }
 
 inline const SDL::Rect &Control::GetRect() const

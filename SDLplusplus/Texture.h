@@ -30,7 +30,7 @@ public:
 		TARGET    = SDL_TEXTUREACCESS_TARGET
 	};
 	
-	Texture() {}
+	Texture();
 	Texture(const Texture &texture);
 	Texture(Texture &&texture);
 	Texture(Renderer &renderer);

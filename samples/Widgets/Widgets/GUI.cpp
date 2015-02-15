@@ -18,7 +18,6 @@ GUI::GUI(System &p_system, Renderer &p_renderer)
 void GUI::AddControl(Control &p_control)
 {
 	p_control.SetRenderer(renderer);
-	p_control.CreateTextures();
 	
 	controls.push_back(&p_control);
 }

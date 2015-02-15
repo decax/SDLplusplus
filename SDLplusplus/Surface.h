@@ -27,7 +27,7 @@ public:
 		DONT_FREE       = SDL_DONTFREE
 	};
 	
-	Surface() {}
+	Surface();
 	Surface(const Surface &surface);
 	Surface(Surface &&other);
 	Surface(PixelFormat pixelFormat, const Size &size);

@@ -5,6 +5,11 @@
 using namespace SDL;
 using namespace std;
 
+List::List()
+{
+	SetSize(Size(100, 200));
+}
+
 List::~List()
 {
 	for (auto control : cells)

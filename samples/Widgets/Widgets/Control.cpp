@@ -8,8 +8,10 @@ using namespace std;
 Control::Control()
 {
 	renderer = nullptr;
-	
-	rect = Rect(Point(0, 0), Size(100, 20));
+	autoSize = true;
+
+	SetPosition(Point(0, 0));
+	SetSize(Size(100, 20));
 	
 	backgroundColor = Color::Transparent;
 	color = Color::White;
@@ -18,6 +20,8 @@ Control::Control()
 void Control::SetRenderer(SDL::Renderer &p_renderer)
 {
 	renderer = &p_renderer;
+	
+	CreateTextures();
 }
 
 void Control::Draw()

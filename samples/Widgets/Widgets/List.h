@@ -7,6 +7,7 @@
 class List : public Control
 {
 public:
+	List();
 	~List();
 	
 	void SetRenderer(SDL::Renderer &renderer) override;

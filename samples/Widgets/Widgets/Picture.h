@@ -8,7 +8,7 @@
 class Picture : public Control
 {
 public:
-	Picture() {}
+	Picture();
 	
 	void SetImage(const SDL::Surface &image);
 	

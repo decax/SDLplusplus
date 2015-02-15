@@ -7,6 +7,11 @@
 
 namespace SDL {
 
+Surface::Surface()
+{
+	surface = nullptr;
+}
+	
 Surface::Surface(PixelFormat p_pixelFormat, const Size &p_size)
 {
 	int bpp;
@@ -26,9 +31,10 @@ Surface::Surface(const Surface &p_other)
 	auto otherSurface = p_other.surface;
 	auto format = otherSurface->format;
 	
-	surface = SDL_CreateRGBSurfaceFrom(otherSurface->pixels, otherSurface->w, otherSurface->h,
-									   format->BitsPerPixel, otherSurface->pitch,
-									   format->Rmask, format->Gmask, format->Bmask, format->Amask);
+	surface = SDL_CreateRGBSurface(0, otherSurface->w, otherSurface->h,
+								   format->BitsPerPixel, format->Rmask, format->Gmask, format->Bmask, format->Amask);
+	
+	SDL_BlitSurface(otherSurface, nullptr, surface, nullptr);
 }
 	
 Surface::Surface(Surface &&p_other)
@@ -48,9 +54,10 @@ const Surface &Surface::operator =(const Surface &p_surface)
 	auto otherSurface = p_surface.surface;
 	auto format = otherSurface->format;
 	
-	surface = SDL_CreateRGBSurfaceFrom(otherSurface->pixels, otherSurface->w, otherSurface->h,
-									   format->BitsPerPixel, otherSurface->pitch,
-									   format->Rmask, format->Gmask, format->Bmask, format->Amask);
+	surface = SDL_CreateRGBSurface(0, otherSurface->w, otherSurface->h,
+								   format->BitsPerPixel, format->Rmask, format->Gmask, format->Bmask, format->Amask);
+	
+	SDL_BlitSurface(otherSurface, nullptr, surface, nullptr);
 	
 	return *this;
 }

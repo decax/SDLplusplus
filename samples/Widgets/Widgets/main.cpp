@@ -8,14 +8,30 @@
 #include "Button.h"
 #include "Picture.h"
 #include "List.h"
+#include "Collection.h"
 
 using namespace SDL;
 using namespace std;
 
+class Scrollbar : public Control
+{
+public:
+	Scrollbar();
+	
+	Size contentSize;
+};
+
+Scrollbar::Scrollbar()
+{
+	SetSize(Size(10, 100));
+
+	contentSize = GetSize();
+}
+
 int main(int argc, char *argv[])
 {
 	System system(System::SubSystem::EVERYTHING);
-	Window window("Widgets", Size(800, 600));
+	Window window("Widgets", Size(1024, 768));
 	Renderer renderer(window, Renderer::TypeFlag::SOFTWARE);
 
 	bool running = true;
@@ -39,19 +55,59 @@ int main(int argc, char *argv[])
 	
 	Image coverImage;
 	
-	Picture picture;
-	picture.SetImage(coverImage.Load("Zelda-Front.jpg"));
-	picture.SetPosition(window.GetSize() / 2);
+	Picture picture1;
+	picture1.SetImage(coverImage.Load("Zelda-Front.jpg"));
+	picture1.SetSize(picture1.GetSize().GetScaledProportionalWidth(128));
+
+	Picture picture2;
+	picture2.SetImage(coverImage.Load("Metroid-Front.png"));
+	picture2.SetSize(picture2.GetSize().GetScaledProportionalWidth(128));
+
+	Picture picture3;
+	picture3.SetImage(coverImage.Load("SuperMarioBros-Front.png"));
+	picture3.SetSize(picture3.GetSize().GetScaledProportionalWidth(128));
+
+	Picture picture4;
+	picture4.SetImage(coverImage.Load("SuperMarioBros2-Front.jpg"));
+	picture4.SetSize(picture4.GetSize().GetScaledProportionalWidth(128));
+
+	Picture picture5;
+	picture5.SetImage(coverImage.Load("SuperMarioBros3-Front.png"));
+	picture5.SetSize(picture5.GetSize().GetScaledProportionalWidth(128));
+
+	Collection picturesCollection;
+	picturesCollection.backgroundColor = Color::Red;
+	picturesCollection.SetPosition(Point(250, 200));
+	picturesCollection.AddItem(picture1);
+	picturesCollection.AddItem(picture2);
+	picturesCollection.AddItem(picture3);
+	picturesCollection.AddItem(picture4);
+	picturesCollection.AddItem(picture5);
 	
 	List listConsoles;
-	listConsoles.AddCellLabel("NES");
-	listConsoles.AddCellLabel("Genesis");
+	listConsoles.SetSize(Size(200, 200));
 	listConsoles.SetPosition(Point(0, 200));
+	listConsoles.backgroundColor = Color::Green;
+	listConsoles.AddCellLabel("NES");
+	listConsoles.AddCellLabel("Super Nintendo");
+	listConsoles.AddCellLabel("Nintendo 64");
+	listConsoles.AddCellLabel("Gamecube");
+	listConsoles.AddCellLabel("Wii");
+	listConsoles.AddCellLabel("Wii U");
+	listConsoles.AddCellLabel("Gameboy");
+	listConsoles.AddCellLabel("Gameboy Advance");
+	listConsoles.AddCellLabel("Genesis");
+	
+	Scrollbar scrollbar;
+	scrollbar.backgroundColor = Color::Blue;
+	scrollbar.SetPosition(Point(400, 20));
+	gui.AddControl(scrollbar);
 	
 	gui.AddControl(label);
 	gui.AddControl(button);
-	gui.AddControl(picture);
+//	gui.AddControl(picture);
 	gui.AddControl(listConsoles);
+	gui.AddControl(picturesCollection);
 	
 	while (running) {
 		gui.Update();

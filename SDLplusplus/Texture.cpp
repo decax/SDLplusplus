@@ -8,6 +8,12 @@
 
 namespace SDL {
 
+Texture::Texture()
+{
+	renderer = nullptr;
+	texture = nullptr;
+}
+	
 Texture::Texture(const Texture &p_texture)
 {
 	renderer = p_texture.renderer;
@@ -25,12 +31,14 @@ Texture::Texture(Texture &&p_texture)
 	renderer = p_texture.renderer;
 	texture = p_texture.texture;
 	
+	p_texture.renderer = nullptr;
 	p_texture.texture = nullptr;
 }
 	
 Texture::Texture(Renderer &p_renderer)
 {
 	renderer = &p_renderer;
+	texture = nullptr;
 }
 	
 Texture::Texture(Renderer &p_renderer, const Surface &p_surface)
@@ -57,6 +65,7 @@ Texture::Texture(Renderer &p_renderer, PixelFormat p_pixelFormat, Access p_acces
 	
 Texture::~Texture()
 {
+	Destroy();
 }
 	
 Texture& Texture::operator =(const Texture &p_texture)
@@ -78,6 +87,7 @@ Texture& Texture::operator =(Texture &&p_texture)
 	renderer = p_texture.renderer;
 	texture = p_texture.texture;
 	
+	p_texture.renderer = nullptr;
 	p_texture.texture = nullptr;
 	
 	return *this;
