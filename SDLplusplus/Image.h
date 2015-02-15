@@ -33,10 +33,10 @@ public:
 	void Init(InitFlag initFlags);
 	void Quit();
 	
-	Surface Load(const std::string &filename);
-	Texture LoadTexture(Renderer &renderer, const std::string &filename);
+	static Surface Load(const std::string &filename);
+	static Texture LoadTexture(Renderer &renderer, const std::string &filename);
 	
-	void SavePNG(const Surface &surface, const std::string &filename);
+	static void SavePNG(const Surface &surface, const std::string &filename);
 };
 	
 inline Image::InitFlag operator|(Image::InitFlag a, Image::InitFlag b) { return Image::InitFlag(int(a) | int(b)); }

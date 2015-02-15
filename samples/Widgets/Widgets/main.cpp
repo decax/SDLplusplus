@@ -34,6 +34,8 @@ int main(int argc, char *argv[])
 	Window window("Widgets", Size(1024, 768));
 	Renderer renderer(window, Renderer::TypeFlag::SOFTWARE);
 
+	Image imageObject; // TODO: investigate to why this is necessary...
+
 	bool running = true;
 
 	system.RegisterEvent(SDL::Event::QUIT,     [&](const Event &)  { running = false; });
@@ -53,26 +55,24 @@ int main(int argc, char *argv[])
 	button.SetPosition(Point(10, 100));
 	button.OnClick([&]() { running = false;} );
 	
-	Image coverImage;
-	
 	Picture picture1;
-	picture1.SetImage(coverImage.Load("Zelda-Front.jpg"));
+	picture1.SetImage(Image::Load("Zelda-Front.jpg"));
 	picture1.SetSize(picture1.GetSize().GetScaledProportionalWidth(128));
 
 	Picture picture2;
-	picture2.SetImage(coverImage.Load("Metroid-Front.png"));
+	picture2.SetImage(Image::Load("Metroid-Front.png"));
 	picture2.SetSize(picture2.GetSize().GetScaledProportionalWidth(128));
 
 	Picture picture3;
-	picture3.SetImage(coverImage.Load("SuperMarioBros-Front.png"));
+	picture3.SetImage(Image::Load("SuperMarioBros-Front.png"));
 	picture3.SetSize(picture3.GetSize().GetScaledProportionalWidth(128));
 
 	Picture picture4;
-	picture4.SetImage(coverImage.Load("SuperMarioBros2-Front.jpg"));
+	picture4.SetImage(Image::Load("SuperMarioBros2-Front.jpg"));
 	picture4.SetSize(picture4.GetSize().GetScaledProportionalWidth(128));
 
 	Picture picture5;
-	picture5.SetImage(coverImage.Load("SuperMarioBros3-Front.png"));
+	picture5.SetImage(Image::Load("SuperMarioBros3-Front.png"));
 	picture5.SetSize(picture5.GetSize().GetScaledProportionalWidth(128));
 
 	Collection picturesCollection;
