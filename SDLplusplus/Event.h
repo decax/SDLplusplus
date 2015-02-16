@@ -27,6 +27,7 @@ public:
 		MOUSE_BUTTON_DOWN = SDL_MOUSEBUTTONDOWN,
 		MOUSE_BUTTON_UP   = SDL_MOUSEBUTTONUP,
 		MOUSE_MOTION      = SDL_MOUSEMOTION,
+		MOUSE_WHEEL       = SDL_MOUSEWHEEL, 
 		
 		JOYSTICK_AXIS_MOTION    = SDL_JOYAXISMOTION,
 		JOYSTICK_BALL_MOTION    = SDL_JOYBALLMOTION,
@@ -221,6 +222,29 @@ inline Point MouseButtonEvent::GetPosition() const
 	return Point(event.button.x, event.button.y);
 }
 	
+//typedef struct SDL_MouseWheelEvent
+//{
+//	Uint32 type;        /**< ::SDL_MOUSEWHEEL */
+//	Uint32 timestamp;
+//	Uint32 windowID;    /**< The window with mouse focus, if any */
+//	Uint32 which;       /**< The mouse instance id, or SDL_TOUCH_MOUSEID */
+//	Sint32 x;           /**< The amount scrolled horizontally */
+//	Sint32 y;           /**< The amount scrolled vertically */
+//} SDL_MouseWheelEvent;
+	
+class MouseWheelEvent : public Event
+{
+public:
+	uint32_t GetTimestamp() const;
+	uint32_t GetWindowID() const;
+	
+	Size GetSize() const;
+};
+	
+inline Size MouseWheelEvent::GetSize() const
+{
+	return Size(event.wheel.x, event.wheel.y);
+}
 	
 //	typedef struct SDL_JoyButtonEvent
 //	{

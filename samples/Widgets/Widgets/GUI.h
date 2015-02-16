@@ -11,6 +11,7 @@ class GUI
 {
 public:
 	GUI(SDL::System &system, SDL::Renderer &renderer);
+	~GUI();
 	
 	void AddControl(Control &control);
 	
@@ -26,4 +27,11 @@ private:
 	std::list<Control *> controls;
 	Control *hoveredControl;
 	Control *pressedControl;
+	
+	SDL::Point mousePosition;
+	
+	void OnMouseMotion(const SDL::Event &event);
+	void OnMouseDown(const SDL::Event &event);
+	void OnMouseUp(const SDL::Event &event);
+	void OnMouseWheel(const SDL::Event &event);
 };

@@ -27,6 +27,8 @@ public:
 	virtual void Press() {}
 	virtual void Release(bool clicked = true) {}
 	
+	virtual void Scroll(const SDL::Size &size) {}
+	
 	SDL::Color backgroundColor;
 	SDL::Color color;
 

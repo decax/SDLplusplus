@@ -84,6 +84,7 @@ public:
 	std::list<Event> Events;
 	
 	void RegisterEvent(Event::Type, std::function<void(const Event &)>);
+	void UnregisterEvent(Event::Type, std::function<void(const Event &)>);
 	
 	uint32_t GetTicks() const;
 	void Delay(uint32_t milliseconds) const;
@@ -96,7 +97,7 @@ public:
 //	void RemoveTimer(SDL_TimerID timerID) const;
 	
 private:
-	std::map<Event::Type, std::function<void(const Event &)>> registeredEvents;
+	std::map<Event::Type, std::list<std::function<void(const Event &)>>> registeredEvents;
 };
 	
 inline System::SubSystem operator|(System::SubSystem a, System::SubSystem b) { return System::SubSystem(int(a) | int(b)); }

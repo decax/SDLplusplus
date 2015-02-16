@@ -13,10 +13,12 @@ public:
 	Collection();
 	~Collection();
 	
-	void AddItem(Picture &picture);
+	void AddItem(Control &control);
 	
 	void SetPosition(const SDL::Point &position) override;
 	void SetRenderer(SDL::Renderer &renderer) override;
+	
+	void Scroll(const SDL::Size &size) override;
 	
 	void DrawForeground() override;
 	
@@ -24,5 +26,9 @@ protected:
 	void UpdateItemsPosition();
 	
 private:
-	std::list<Picture *> items;
+	SDL::Point contentPosition;
+	
+	SDL::Size offset;
+	
+	std::list<Control *> items;
 };

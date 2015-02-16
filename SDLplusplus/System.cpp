@@ -1,5 +1,7 @@
 #include "System.h"
 
+#include <cassert>
+
 namespace SDL {
 
 using namespace std;
@@ -32,11 +34,17 @@ void System::QuitSubSystem(SubSystem p_subSystem)
 	SDL_QuitSubSystem((int)p_subSystem);
 }
 	
-void System::RegisterEvent(Event::Type eventType, function<void(const Event &)> callback)
+void System::RegisterEvent(Event::Type p_eventType, function<void(const Event &)> p_callback)
 {
-	registeredEvents[eventType] = callback;
+	registeredEvents[p_eventType].push_back(p_callback);
 }
 
+void System::UnregisterEvent(Event::Type p_eventType, function<void(const Event &)> p_callback)
+{
+//	assert(registeredEvents[p_eventType] == p_callback);
+//	registeredEvents[p_eventType] = nullptr;
+}
+	
 void System::Update()
 {
 	PollEvents();
@@ -62,7 +70,9 @@ void System::PollEvents()
 		
 		auto it = registeredEvents.find(e.GetType());
 		if (it != registeredEvents.end()) {
-			(it->second)(e);
+			for (auto f : it->second) {
+				f(e);
+			}
 		}
 	}
 }
