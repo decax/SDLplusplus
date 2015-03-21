@@ -11,6 +11,8 @@ Collection::Collection()
 	offset = Size(10, 10);
 	
 	contentPosition	= Point(0, 0);
+	
+	scrollbar.backgroundColor = Color::Blue;
 }
 
 Collection::~Collection()
@@ -28,6 +30,13 @@ void Collection::SetPosition(const SDL::Point &p_position)
 	Control::SetPosition(p_position);
 	
 	UpdateItemsPosition();
+}
+
+void Collection::SetSize(const SDL::Size &p_size)
+{
+	Control::SetSize(p_size);
+	
+	scrollbar.SetSize(Size(scrollbar.GetSize().Width, GetSize().Height));
 }
 
 void Collection::UpdateItemsPosition()
@@ -55,6 +64,8 @@ void Collection::UpdateItemsPosition()
 		
 		lastSize = item->GetRect().Size;
 	}
+	
+	scrollbar.SetPosition(Point(GetRect().GetBottomRight().X - scrollbar.GetSize().Width, GetPosition().Y));
 }
 
 void Collection::Scroll(const SDL::Size &size)
@@ -72,17 +83,23 @@ void Collection::SetRenderer(SDL::Renderer &p_renderer)
 		item->SetRenderer(p_renderer);
 	}
 	
+	scrollbar.SetRenderer(p_renderer);
+	
 	UpdateItemsPosition();
 }
 
 void Collection::DrawForeground()
 {
+	Control::DrawForeground();
+	
 	auto oldClipRect = renderer->GetClipRect();
 	renderer->SetClipRect(rect);
 
 	for (auto item : items) {
 		item->Draw();
 	}
+	
+	scrollbar.Draw();
 
 	renderer->SetClipRect(oldClipRect);
 }

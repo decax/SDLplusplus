@@ -18,12 +18,18 @@ Texture::Texture(const Texture &p_texture)
 {
 	renderer = p_texture.renderer;
 	
-	texture = SDL_CreateTexture(renderer->renderer, p_texture.GetPixelFormat(), p_texture.GetAccess() | Access::TARGET, p_texture.GetSize().Width, p_texture.GetSize().Height);
+	// It's possible that the texture wasn't initialized. If we copy it, it must remains uninitialized
+	if (!renderer) {
+		texture = nullptr;
+	}
+	else {
+		texture = SDL_CreateTexture(renderer->renderer, p_texture.GetPixelFormat(), p_texture.GetAccess() | Access::TARGET, p_texture.GetSize().Width, p_texture.GetSize().Height);
 
-	auto oldTarget = renderer->GetRenderTarget();
-	renderer->SetRenderTarget(*this);
-	renderer->Copy(p_texture);
-	renderer->SetRenderTarget(oldTarget);
+		auto oldTarget = renderer->GetRenderTarget();
+		renderer->SetRenderTarget(*this);
+		renderer->Copy(p_texture);
+		renderer->SetRenderTarget(oldTarget);
+	}
 }
 	
 Texture::Texture(Texture &&p_texture)

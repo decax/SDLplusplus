@@ -9,6 +9,7 @@
 #include "Picture.h"
 #include "List.h"
 #include "Collection.h"
+#include "Scrollbar.h"
 
 #include <iostream>
 
@@ -96,21 +97,6 @@ void Game::DrawForeground()
 	title.Draw();
 }
 
-class Scrollbar : public Control
-{
-public:
-	Scrollbar();
-	
-	Size contentSize;
-};
-
-Scrollbar::Scrollbar()
-{
-	SetSize(Size(10, 100));
-
-	contentSize = GetSize();
-}
-
 int main(int argc, char *argv[])
 {
 	System system(System::SubSystem::EVERYTHING);
@@ -136,42 +122,54 @@ int main(int argc, char *argv[])
 	button.SetFont("Arial.ttf");
 	button.SetText("click me");
 	button.SetPosition(Point(10, 100));
-	button.OnClick([&]() { running = false;} );
+	button.RegisterOnClick([&]() { running = false;} );
 	
-	Game game1("The Legend of Zelda", "Zelda-Front.jpg");
-	Game game2("Metroid", "Metroid-Front.png");
-	Game game3("Super Mario Bros", "SuperMarioBros-Front.png");
-	Game game4("Super Mario Bros 2", "SuperMarioBros2-Front.jpg");
-	Game game5("Super Mario Bros 3", "SuperMarioBros3-Front.png");
+	std::list<Game> games = {
+		Game("The Legend of Zelda", "Zelda-Front.jpg"),
+		Game("Metroid", "Metroid-Front.png"),
+		Game("Super Mario Bros", "SuperMarioBros-Front.png"),
+		Game("Super Mario Bros 2", "SuperMarioBros2-Front.jpg"),
+		Game("Super Mario Bros 3", "SuperMarioBros3-Front.png")
+	};
+	
+//	Game game1("The Legend of Zelda", "Zelda-Front.jpg");
+//	Game game2("Metroid", "Metroid-Front.png");
+//	Game game3("Super Mario Bros", "SuperMarioBros-Front.png");
+//	Game game4("Super Mario Bros 2", "SuperMarioBros2-Front.jpg");
+//	Game game5("Super Mario Bros 3", "SuperMarioBros3-Front.png");
 	
 	Collection picturesCollection;
 	picturesCollection.backgroundColor = Color::Red;
-	picturesCollection.SetSize(Size(600, 500));
+	picturesCollection.SetSize(Size(400, 500));
 	picturesCollection.SetPosition(Point(250, 200));
-	picturesCollection.AddItem(game1);
-	picturesCollection.AddItem(game2);
-	picturesCollection.AddItem(game3);
-	picturesCollection.AddItem(game4);
-	picturesCollection.AddItem(game5);
+	for (auto game : games) {
+		picturesCollection.AddItem(game);
+	}
+//	picturesCollection.AddItem(game1);
+//	picturesCollection.AddItem(game2);
+//	picturesCollection.AddItem(game3);
+//	picturesCollection.AddItem(game4);
+//	picturesCollection.AddItem(game5);
+	
+	list<string> consoles {
+		"NES",
+		"Super Nintendo",
+		"Nintendo 64",
+		"Gamecube",
+		"Wii",
+		"Wii U",
+		"Gameboy",
+		"Gameboy Advance",
+		"Genesis"
+	};
 	
 	List listConsoles;
 	listConsoles.SetSize(Size(200, 200));
 	listConsoles.SetPosition(Point(0, 200));
 	listConsoles.backgroundColor = Color::Green;
-	listConsoles.AddCellLabel("NES");
-	listConsoles.AddCellLabel("Super Nintendo");
-	listConsoles.AddCellLabel("Nintendo 64");
-	listConsoles.AddCellLabel("Gamecube");
-	listConsoles.AddCellLabel("Wii");
-	listConsoles.AddCellLabel("Wii U");
-	listConsoles.AddCellLabel("Gameboy");
-	listConsoles.AddCellLabel("Gameboy Advance");
-	listConsoles.AddCellLabel("Genesis");
-	
-	Scrollbar scrollbar;
-	scrollbar.backgroundColor = Color::Blue;
-	scrollbar.SetPosition(Point(400, 20));
-	gui.AddControl(scrollbar);
+	for (auto console : consoles) {
+		listConsoles.AddCellLabel(console);
+	}
 	
 	gui.AddControl(label);
 	gui.AddControl(button);

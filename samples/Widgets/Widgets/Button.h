@@ -35,7 +35,8 @@ public:
 	void Release(bool clicked) override;
 	
 	void Click();
-	void OnClick(std::function<void()> onClick);
+
+	void RegisterOnClick(std::function<void()> onClick);
 	
 private:
 	State state;

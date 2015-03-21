@@ -126,7 +126,7 @@ void Button::Click()
 	}
 }
 
-void Button::OnClick(std::function<void()> p_onClick)
+void Button::RegisterOnClick(std::function<void()> p_onClick)
 {
 	clickedCallback = p_onClick;
 }
