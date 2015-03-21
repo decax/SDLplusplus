@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Control.h"
-#include "Picture.h"
+#include "Scrollbar.h"
 
 #include <SDLplusplus/SDLplusplus.h>
 
@@ -16,6 +16,7 @@ public:
 	void AddItem(Control &control);
 	
 	void SetPosition(const SDL::Point &position) override;
+	void SetSize(const SDL::Size &size) override;
 	void SetRenderer(SDL::Renderer &renderer) override;
 	
 	void Scroll(const SDL::Size &size) override;
@@ -27,8 +28,10 @@ protected:
 	
 private:
 	SDL::Point contentPosition;
+	SDL::Size contentSize;
 	
 	SDL::Size offset;
 	
+	Scrollbar scrollbar;
 	std::list<Control *> items;
 };

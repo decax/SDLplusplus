@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440F43DD1A94397200E133FB /* Scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 440F43DB1A94397200E133FB /* Scrollbar.cpp */; };
 		444BD40F1A8D4D7300010C23 /* List.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 444BD40D1A8D4D7300010C23 /* List.cpp */; };
 		4484FCB61A8BB6380031A7E5 /* Picture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4484FCB41A8BB6380031A7E5 /* Picture.cpp */; };
 		44A673861A9055B5008DC0BC /* Collection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 44A673841A9055B5008DC0BC /* Collection.cpp */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		440F43DB1A94397200E133FB /* Scrollbar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Scrollbar.cpp; sourceTree = "<group>"; };
+		440F43DC1A94397200E133FB /* Scrollbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scrollbar.h; sourceTree = "<group>"; };
 		444BD40D1A8D4D7300010C23 /* List.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = List.cpp; sourceTree = "<group>"; };
 		444BD40E1A8D4D7300010C23 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
 		4484FCB41A8BB6380031A7E5 /* Picture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Picture.cpp; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				44E6C64A1A64C18200977484 /* main.cpp */,
+				440F43DB1A94397200E133FB /* Scrollbar.cpp */,
+				440F43DC1A94397200E133FB /* Scrollbar.h */,
 				44A673841A9055B5008DC0BC /* Collection.cpp */,
 				44A673851A9055B5008DC0BC /* Collection.h */,
 				44F7CEC31A6CC7DA007E00F6 /* GUI.cpp */,
@@ -175,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				444BD40F1A8D4D7300010C23 /* List.cpp in Sources */,
+				440F43DD1A94397200E133FB /* Scrollbar.cpp in Sources */,
 				44E6C6511A64C5F400977484 /* Label.cpp in Sources */,
 				44F7CEC71A6CD035007E00F6 /* Control.cpp in Sources */,
 				44A673861A9055B5008DC0BC /* Collection.cpp in Sources */,

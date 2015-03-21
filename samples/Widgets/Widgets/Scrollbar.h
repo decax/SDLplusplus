@@ -1,14 +1,22 @@
-//
-//  Scrollbar.h
-//  Widgets
-//
-//  Created by Dominic Hudon on 2015-02-17.
-//  Copyright (c) 2015 Dominic Hudon. All rights reserved.
-//
+#pragma once
 
-#ifndef __Widgets__Scrollbar__
-#define __Widgets__Scrollbar__
+#include "Control.h"
 
-#include <stdio.h>
+#include <SDLplusplus/SDLplusplus.h>
 
-#endif /* defined(__Widgets__Scrollbar__) */
+class Scrollbar : public Control
+{
+public:
+	Scrollbar();
+	
+	void DrawForeground() override;
+	
+	SDL::Size contentSize;
+	
+	void SetHandleSize(float size);
+	float GetValue() const;
+	
+private:
+	float handleSize;
+	float value;
+};
