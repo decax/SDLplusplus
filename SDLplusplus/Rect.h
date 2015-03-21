@@ -24,8 +24,6 @@ public:
 	Rect Intersect(const Rect &other) const;
 	bool Contains(const Point &point) const;
 	
-	bool Contains(const Point &point) const;
-	
 	Point Position;
 	Size Size;
 	
@@ -129,12 +127,5 @@ inline bool Rect::Contains(const Point &p_point) const
 {
 	return p_point.X >= Position.X && p_point.X < Position.X + Size.Width && p_point.Y >= Position.Y && p_point.Y < Position.Y + Size.Height;
 }
-
-	
-inline bool Rect::Contains(const Point &p_point) const
-{
-	return p_point.X >= Position.X && p_point.X < GetBottomRight().X && p_point.Y >= Position.Y && p_point.Y < GetBottomRight().Y;
-}
-
 	
 }
