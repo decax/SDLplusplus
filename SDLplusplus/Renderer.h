@@ -79,6 +79,7 @@ public:
 	
 	void Copy(const Texture &texture, const Rect &destRect);
 	void Copy(const Texture &texture, const Rect &srcRect, const Rect &dstRect);
+	void Copy(const Texture &texture, const Rect &srcRect, const Rect &dstRect, Flip flip);
 	
 	void Copy(const Texture &texture, double angle);
 	void Copy(const Texture &texture, double angle, const Point &center);
@@ -149,6 +150,11 @@ inline void Renderer::Copy(const Texture &p_texture, const Rect &p_destRect)
 	Rect textureRect(p_texture.GetSize());
 	
 	Copy(p_texture, textureRect, p_destRect);
+}
+	
+inline void Renderer::Copy(const Texture &p_texture, const Rect &p_srcRect, const Rect &p_dstRect, Flip p_flip)
+{
+	Copy(p_texture, p_srcRect, p_dstRect, 0, Point(p_srcRect.Position.X + p_srcRect.Size.Width / 2, p_srcRect.Position.Y + p_srcRect.Size.Height / 2), p_flip);
 }
 
 inline void Renderer::Copy(const Texture &p_texture, double p_angle)

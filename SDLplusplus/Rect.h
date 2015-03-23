@@ -29,6 +29,8 @@ public:
 	
 	Point GetBottomRight() const;
 	void SetBottomRight(const Point &bottomRight);
+	
+	Rect FlipX() const;
 };
 	
 inline Rect::Rect(const class Size &p_size)
@@ -126,6 +128,16 @@ inline Rect Rect::Intersect(const Rect &other) const
 inline bool Rect::Contains(const Point &p_point) const
 {
 	return p_point.X >= Position.X && p_point.X < Position.X + Size.Width && p_point.Y >= Position.Y && p_point.Y < Position.Y + Size.Height;
+}
+	
+inline Rect Rect::FlipX() const
+{
+	Point pos = Point(Position.X + Size.Width, Position.Y);
+	class Size size;
+ 	size.Width = -Size.Width;
+	size.Height = Size.Height;
+	
+	return Rect(pos, size);
 }
 	
 }

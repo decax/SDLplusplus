@@ -19,5 +19,8 @@
       <FileRef
          location = "group:samples/Widgets/Widgets.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:samples/Kid Icarus/Kid Icarus/Kid Icarus.xcodeproj">
+      </FileRef>
    </Group>
 </Workspace>

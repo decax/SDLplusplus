@@ -82,7 +82,7 @@ void System::Delay(uint32_t p_milliseconds) const
 	SDL_Delay(p_milliseconds);
 }
 	
-uint32_t System::GetTicks() const
+uint32_t System::GetTicks()
 {
 	return SDL_GetTicks();
 }

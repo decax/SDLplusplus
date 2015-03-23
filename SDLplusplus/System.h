@@ -86,7 +86,7 @@ public:
 	void RegisterEvent(Event::Type, std::function<void(const Event &)>);
 	void UnregisterEvent(Event::Type, std::function<void(const Event &)>);
 	
-	uint32_t GetTicks() const;
+	static uint32_t GetTicks();
 	void Delay(uint32_t milliseconds) const;
 
 	DisplayMode GetDesktopDisplayMode() const;

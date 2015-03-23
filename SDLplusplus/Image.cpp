@@ -36,7 +36,12 @@ Surface Image::Load(const std::string &p_filename)
 	
 Texture Image::LoadTexture(Renderer &p_renderer, const std::string &p_filename)
 {
-	return Texture(p_renderer, IMG_LoadTexture(p_renderer.GetSDLRenderer(), p_filename.c_str()));
+	auto texture = IMG_LoadTexture(p_renderer.GetSDLRenderer(), p_filename.c_str());
+	if (!texture) {
+		// throw
+	}
+	
+	return Texture(p_renderer, texture);
 }
 	
 void Image::SavePNG(const Surface &p_surface, const std::string &p_filename)
