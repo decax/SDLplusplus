@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:samples/Tetris/../../SDLplusplus.xcodeproj">
+      location = "group:SDLplusplus.xcodeproj">
    </FileRef>
    <Group
       location = "container:"
@@ -11,16 +11,16 @@
          location = "group:samples/Tetris/Tetris.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:samples/Tetris/../Snake/Snake.xcodeproj">
+         location = "group:samples/Snake/Snake.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:samples/Snake/../Breakout/Breakout.xcodeproj">
+         location = "group:samples/Breakout/Breakout.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:samples/Widgets/Widgets.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:samples/Kid Icarus/Kid Icarus/Kid Icarus.xcodeproj">
+         location = "group:samples/Kid Icarus/Kid Icarus.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
