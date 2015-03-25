@@ -45,4 +45,6 @@ private:
 	
 	Animation *animation;
 	Animation animations[4];
+	
+	void SetAnimation(AnimationType animationType);
 };

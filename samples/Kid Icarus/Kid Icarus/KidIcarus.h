@@ -2,9 +2,10 @@
 
 #include <SDLplusplus/SDLplusplus.h>
 
-#include "Time.h"
 #include "Pit.h"
+#include "Snake.h"
 
+#include "Time.h"
 #include "Type.h"
 
 class KidIcarus
@@ -26,6 +27,7 @@ private:
 	Time time;
 	
 	Pit pit;
+	Snake snake;
 	
 	bool running;
 };

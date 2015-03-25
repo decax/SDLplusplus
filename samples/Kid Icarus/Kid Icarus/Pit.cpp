@@ -25,33 +25,20 @@ Pit::Pit(Renderer &p_renderer)
 		}
 	}
 
-	list<Animation::Frame> idleFrames;
-	idleFrames.push_back(Animation::Frame(0, TimeSpan(100)));
-	animations[AnimationType::IDLE].SetFrames(idleFrames);
+	animations[AnimationType::IDLE      ].SetFrames("0");
+	animations[AnimationType::RUNNING   ].SetFrames("Delay:100 1 2 3");
+	animations[AnimationType::CROUCHING ].SetFrames("8");
+	animations[AnimationType::LOOKING_UP].SetFrames("9");
 	
-	list<Animation::Frame> runningFrames;
-	runningFrames.push_back(Animation::Frame(1, TimeSpan(100)));
-	runningFrames.push_back(Animation::Frame(2, TimeSpan(100)));
-	runningFrames.push_back(Animation::Frame(3, TimeSpan(100)));
-	animations[AnimationType::RUNNING].SetFrames(runningFrames);
-	
-	list<Animation::Frame> crouchingFrames;
-	crouchingFrames.push_back(Animation::Frame(8, TimeSpan(100)));
-	animations[AnimationType::CROUCHING].SetFrames(crouchingFrames);
-	
-	list<Animation::Frame> lookingUpFrames;
-	lookingUpFrames.push_back(Animation::Frame(9, TimeSpan(100)));
-	animations[AnimationType::LOOKING_UP].SetFrames(lookingUpFrames);
-
 	direction = Direction::RIGHT;
-	animation = &animations[AnimationType::IDLE];
+	SetAnimation(AnimationType::IDLE);
 }
 
 void Pit::Crouch(bool enable)
 {
 	crouching = enable;
 	if (enable) {
-		animation = &animations[AnimationType::CROUCHING];
+		SetAnimation(AnimationType::CROUCHING);
 	}
 }
 
@@ -59,8 +46,13 @@ void Pit::LookUp(bool enable)
 {
 	lookingUp = enable;
 	if (enable) {
-		animation = &animations[AnimationType::LOOKING_UP];
+		SetAnimation(AnimationType::LOOKING_UP);
 	}
+}
+
+void Pit::SetAnimation(AnimationType animationType)
+{
+	animation = &animations[animationType];
 }
 
 void Pit::SetDirection(Direction p_direction, bool p_moving)
@@ -68,7 +60,7 @@ void Pit::SetDirection(Direction p_direction, bool p_moving)
 	if (p_moving)
 	{
 		if (!crouching) {
-			animation = &animations[AnimationType::RUNNING];
+			SetAnimation(AnimationType::RUNNING);
 		}
 
 		if (!lookingUp) {
@@ -101,6 +93,6 @@ void Pit::Draw()
 {
 	Point pos((int)position.x, (int)position.y);
 	
-	renderer->Copy(texture, texturePositions[animation->GetFrame()], Rect(pos, size), direction == Direction::RIGHT ? Renderer::Flip::NONE : Renderer::Flip::HORIZONTAL);
+	renderer->Copy(texture, texturePositions[animation->GetFrame().index], Rect(pos, size), direction == Direction::RIGHT ? Renderer::Flip::NONE : Renderer::Flip::HORIZONTAL);
 }
 

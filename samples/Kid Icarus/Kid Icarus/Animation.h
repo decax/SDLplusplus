@@ -3,6 +3,7 @@
 #include "Time.h"
 
 #include <list>
+#include <string>
 
 class Animation
 {
@@ -10,16 +11,20 @@ public:
 	class Frame
 	{
 	public:
-		Frame(int frame, const TimeSpan &delay);
+		Frame() {}
+		Frame(int index, const TimeSpan &delay);
 		
-		int frame;
+		int index;
 		TimeSpan delay;
 	};
 	
+	void SetFrames(const std::string &script);
 	void SetFrames(const std::list<Frame> &frames);
 	
 	void Update(const Time &time);
-	int GetFrame();
+	const Frame &GetFrame();
+	
+	std::string ToString() const;
 	
 private:
 	std::list<Frame> frames;

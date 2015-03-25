@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6627E571AC0DBEA00EB7A81 /* Snake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B6627E551AC0DBEA00EB7A81 /* Snake.cpp */; };
 		B699A7601ABDB1800087EFC6 /* SDLplusplus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B699A75F1ABDB1800087EFC6 /* SDLplusplus.framework */; };
 		B699A7631ABDB1980087EFC6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B699A7621ABDB1980087EFC6 /* main.cpp */; };
 		B699A7661ABDB1D30087EFC6 /* KidIcarus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B699A7641ABDB1D30087EFC6 /* KidIcarus.cpp */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B6627E551AC0DBEA00EB7A81 /* Snake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Snake.cpp; sourceTree = "<group>"; };
+		B6627E561AC0DBEA00EB7A81 /* Snake.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Snake.h; sourceTree = "<group>"; };
 		B699A73C1ABDB13E0087EFC6 /* Kid Icarus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kid Icarus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B699A7401ABDB13E0087EFC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B699A75F1ABDB1800087EFC6 /* SDLplusplus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDLplusplus.framework; path = /Library/Frameworks/SDLplusplus.framework; sourceTree = "<absolute>"; };
@@ -67,6 +70,8 @@
 				B699A7651ABDB1D30087EFC6 /* KidIcarus.h */,
 				B699A7671ABF3DE70087EFC6 /* Pit.cpp */,
 				B699A7681ABF3DE70087EFC6 /* Pit.h */,
+				B6627E551AC0DBEA00EB7A81 /* Snake.cpp */,
+				B6627E561AC0DBEA00EB7A81 /* Snake.h */,
 				B699A76A1ABF42B90087EFC6 /* Animation.cpp */,
 				B699A76B1ABF42B90087EFC6 /* Animation.h */,
 				B699A76D1ABF46520087EFC6 /* Time.cpp */,
@@ -163,6 +168,7 @@
 			files = (
 				B699A7691ABF3DE70087EFC6 /* Pit.cpp in Sources */,
 				B699A7631ABDB1980087EFC6 /* main.cpp in Sources */,
+				B6627E571AC0DBEA00EB7A81 /* Snake.cpp in Sources */,
 				B699A76C1ABF42B90087EFC6 /* Animation.cpp in Sources */,
 				B699A7661ABDB1D30087EFC6 /* KidIcarus.cpp in Sources */,
 				B699A76F1ABF46520087EFC6 /* Time.cpp in Sources */,
@@ -297,6 +303,7 @@
 				B699A75B1ABDB13F0087EFC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
