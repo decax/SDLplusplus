@@ -7,10 +7,12 @@
 using namespace std;
 using namespace SDL;
 
+
 KidIcarus::KidIcarus()
 : system(System::SubSystem::EVERYTHING),
   window("Kid Icarus", Size(800, 600)),
   renderer(window, Renderer::TypeFlag::ACCELERATED | Renderer::TypeFlag::PRESENT_VSYNC),
+  level(renderer),
   pit(renderer),
   snake(renderer)
 {
@@ -19,6 +21,8 @@ KidIcarus::KidIcarus()
 	system.RegisterEvent(Event::QUIT,     [&](const Event &) { running = false; });
 	system.RegisterEvent(Event::KEY_DOWN, bind(&KidIcarus::OnKeyDown, this, placeholders::_1));
 	system.RegisterEvent(Event::KEY_UP,   bind(&KidIcarus::OnKeyUp,   this, placeholders::_1));
+	
+	level.Load();
 	
 	StartGame();
 }
@@ -107,6 +111,8 @@ void KidIcarus::Run()
 		
 		renderer.SetDrawColor(Color::Black);
 		renderer.Clear();
+		
+		level.Draw();
 		
 		pit.Draw();
 		snake.Draw();

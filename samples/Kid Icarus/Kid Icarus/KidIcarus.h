@@ -2,6 +2,8 @@
 
 #include <SDLplusplus/SDLplusplus.h>
 
+#include "Level.h"
+
 #include "Pit.h"
 #include "Snake.h"
 
@@ -25,6 +27,8 @@ private:
 	SDL::Renderer renderer;
 	
 	Time time;
+	
+	Level level;
 	
 	Pit pit;
 	Snake snake;
